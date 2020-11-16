@@ -23,9 +23,37 @@ class CategoryController extends Controller
             'description' => $request->input('description')
         ]);
 
-    
         return redirect()->back();
 
+    }
+
+    public function viewCategory()
+    {
+        $categoryShow = Category::all();
+        return view('backend.layouts.viewCategory',compact('categoryShow'));
 
     }
+   
+    public function editCategory(Request $request,$id)
+    {
+       if($request->isMethod('post')){
+           $data = $request->all();
+           Category::where(['id'=>$id])->
+           update(['name'=>$data['category_name'],
+           'parent_id'=>$data['parent_id']]);
+           return redirect()->route('viewCategory'); 
+       }
+       
+       $levels = Category::where(['parent_id'=>0])->get();
+       $categoryDetails = Category::where(['id'=>$id])->first();
+        return view('backend.layouts.editCategory')->with(compact('levels','categoryDetails'));
+    }
+
+    public function deleteCategory($id)
+    {
+        Category::where(['id'=>$id])->delete();
+
+          return redirect()->back();
+    }
+
 }

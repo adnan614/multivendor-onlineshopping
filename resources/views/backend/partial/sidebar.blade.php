@@ -46,7 +46,7 @@
                         <a href="{{ route('insertCategory')}}" style="color: grey;"> Insert Category </a>
                     </li>
                     <li>
-                        <a href="#" style="color: grey;"> View Category </a>
+                        <a href="{{route('viewCategory')}}" style="color: grey;"> View Category </a>
                     </li>
                 </ul>
                 
