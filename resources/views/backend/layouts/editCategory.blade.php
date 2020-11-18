@@ -6,22 +6,19 @@
         <h1 style="margin-top: 10px;"> <i class="fa fa-fw fa-edit" aria-hidden="true"></i> Update Category</h1>
         <br><br>
 
-<form method="post" action="{{url('edit.category'.$categoryDetails->id)}}">
+<form method="post" action="{{url('update.category'.$categoryEdit->id)}}">
 
 @csrf
   <div class="form-group">
     <label for="name">Category Name</label>
-    <input type="text" class="form-control" id="name" value="{{ $categoryDetails->name }}" name="category_name">
+    <input type="text" class="form-control" id="name" value="{{ $categoryEdit->name }}" name="category_name">
   </div>
   <div class="form-group">
-    <label>Parent Category</label>
-    <select name="parent_id" id="parent_id" class="form-control">
-        <option value="0">Parent Category</option>
-        @foreach($levels as $val)
-        <option value="{{ $val->id }}">  {{ $val->name }} </option>
-        @endforeach
-    </select>
+    <label for="name">Category description</label>
+    <input type="text" class="form-control" id="name" value="{{ $categoryEdit->description }}" name="category_description">
   </div>
+
+  
  
   <button type="submit" class="btn btn-primary">Update Product</button>
   </form>

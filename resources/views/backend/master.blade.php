@@ -48,6 +48,7 @@
     <script src="backend/assets/plugins/bower_components/chartist/dist/chartist.min.js"></script>
     <script src="backend/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="backend/assets/js/pages/dashboards/dashboard1.js"></script>
+ 
 </body>
 
 </html>

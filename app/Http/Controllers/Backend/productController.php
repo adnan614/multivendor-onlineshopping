@@ -11,20 +11,21 @@ use Throwable;
 class productController extends Controller
 {
     public function insertProduct(){
-        $categories = Category::where(['parent_id'=>0])->get();
-        $categories_dropdown = "<option value='' selected disabled>Select</option>";
-        foreach($categories as $cat)
-        {
-            $categories_dropdown .= "<option value='".$cat->id."'>".$cat->name."</option>";
-        }
-        return view('backend.layouts.insertProduct',compact('categories_dropdown'));
+        $categories=Category::all();
+        return view('backend.layouts.insertProduct',compact('categories'));
     }
 
     public function addProduct(Request $request){
 
-        // dd($request->all());
+        $request->validate([
+            'name'=>'required',
+            'price'=>'required|min:3',
+            'category_id'=>'required',
+            'color'=>'required',
+            'image'=>'required'
+        ]);
          
-       try{
+    
         $productStore = new Product();
 
         $productStore->category_id = $request->input('category_id');
@@ -43,13 +44,9 @@ class productController extends Controller
              return $request;
              $productStore->image = '';
         }
-
         $productStore->save();
-        return redirect()->back()->with('success','inserted Successfully!');
 
-       }catch(Throwable $exception){
-        return redirect()->back()->with('error','something went wrong!');  
-       }
+        return redirect()->back()->with('message','inserted Product Successfully!'); 
     }
     
     public function viewProduct()
@@ -71,17 +68,18 @@ class productController extends Controller
     public function editProduct($id)
     {
         $productEdit = Product::find($id);
-        $categories = Category::where(['parent_id'=>0])->get();
-        $categories_dropdown = "<option value='' selected disabled>Select</option>";
-        foreach($categories as $cat){
-            if($cat->id==$productEdit->category_id){
-                $selected = "selected";
-            }else{
-                $selected = "";
-            }
-            $categories_dropdown .= "<option value='".$cat->id."' ".$selected.">".$cat->name."</option>";
-        }  
-        return view('backend.layouts.editProduct')->with(compact('productEdit','categories_dropdown'));
+        $categories = Category::all();
+        
+        // $categories_dropdown = "<option value='' selected disabled>Select</option>";
+        // foreach($categories as $cat){
+        //     if($cat->id==$productEdit->category_id){
+        //         $selected = "selected";
+        //     }else{
+        //         $selected = "";
+        //     }
+        //     $categories_dropdown .= "<option value='".$cat->id."' ".$selected.">".$cat->name."</option>";
+        // }  
+        return view('backend.layouts.editProduct',compact('productEdit','categories'));
 
         
     }

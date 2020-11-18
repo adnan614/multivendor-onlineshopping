@@ -6,26 +6,26 @@
         <h1 style="margin-top: 10px;"> <i class="fa fa-plus" aria-hidden="true"></i> Insert Product</h1>
         <br><br>
 
-@if(session('success'))
-        <div class="alert alert-success">
-            {!! session('success') !!}
-        </div>
+@if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
 @endif
 
-@if(session('error'))
-        <div class="alert alert-danger">
-            {!! session('error') !!}
-    </div>
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
 @endif
 
 <form method="post" action="{{ route('addProduct') }}" enctype="multipart/form-data">
 
 @csrf
-
 <div class="form-group">
     <label for="name">Under Category</label>
     <select name="category_id" id="category_id" class="form-control">
-      <?php   echo $categories_dropdown;  ?>
+      <option value="0">Select a Product Category</option>
+      @foreach($categories as $cat)
+      <option value="{{$cat->id}}">{{$cat->name}}</option>
+      @endforeach
     </select>
 
   </div>

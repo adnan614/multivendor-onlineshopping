@@ -20,8 +20,8 @@ Route::post('update.product{id}','Backend\productController@updateProduct');
 
 // Category //
 Route::get('/insertCategory','Backend\CategoryController@insertCategory')->name('insertCategory');
-Route::get('/viewCategory','Backend\CategoryController@viewCategory')->name('viewCategory');
-Route::match(['get','post'],'edit.category{id}','Backend\CategoryController@editCategory');
-Route::match(['get','post'],'delete.category{id}','Backend\CategoryController@deleteCategory');
-
 Route::post('/storeCategory','Backend\CategoryController@storeCategory')->name('storeCategory');
+Route::get('/viewCategory','Backend\CategoryController@viewCategory')->name('viewCategory');
+Route::get('edit.category{id}','Backend\CategoryController@editCategory');
+Route::get('delete.category{id}','Backend\CategoryController@deleteCategory');
+Route::post('update.category{id}','Backend\CategoryController@updateCategory');

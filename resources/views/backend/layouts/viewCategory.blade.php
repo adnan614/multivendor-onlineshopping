@@ -2,15 +2,15 @@
 
 @section('content')
 
-<div class="row"><!-- row 2 begin -->
-    <div class="col-lg-12"><!-- col-lg-12 begin -->
-        <div class="panel panel-default"><!-- panel panel-default begin -->
-            <div class="panel-heading"><!-- panel-heading begin -->
-               <h3 class="panel-title" style="margin-top: 10px;"><!-- panel-title begin -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+               <h3 class="panel-title" style="margin-top: 10px;">
                
                    <i class="fa fa-tags"></i> View Category
                 
-               </h3><!-- panel-title finish --> 
+               </h3>
             </div>
 
             <br>
@@ -21,7 +21,6 @@
                         <tr>
                         <th>Category ID</th>
                         <th>category Name</th>
-                        <th>Parent ID</th>
                         <th>Status</th>
                         <th> Category Delete </th>
                         <th> Category Edit </th>
@@ -32,7 +31,6 @@
                     <tr style="font-weight:500">
                         <td>{{$row->id}}</td>
                         <td>{{$row->name }}</td>
-                        <td>{{$row->parent_id}}</td>
                         <td><span class="label-custom label label-success">Active</span></td>
                         <td>
                         <a href="{{ url('delete.category'.$row->id) }}">

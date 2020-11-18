@@ -9,10 +9,13 @@
 <form method="post" action="{{ url('update.product'.$productEdit->id) }}" enctype="multipart/form-data">
 
 @csrf
+
 <div class="form-group">
-    <label for="name">Under Category</label>
-    <select name="category_id" id="category_id" class="form-control">
-      <?php   echo$categories_dropdown;  ?>
+    <label for="id">Under Category</label>
+    <select name="id" id="id" class="form-control">
+    @foreach($categories as $cat)
+      <option value="{{$cat->id}}">{{$cat->name}}</option>
+      @endforeach
     </select>
 
   </div>
@@ -38,8 +41,8 @@
   </div>
 
   <div class="form-group">
-      <label>Product Description</label>
-      <textarea name="description" class="form-control" id="description" value="{{ $productEdit->description }}"  ></textarea>
+      <label for="description">Product Description</label>
+      <input name="description" class="form-control" id="description" value="{{ $productEdit->description }}"  >
   </div>
   <button type="submit" class="btn btn-primary">Update Product</button>
   </form>
