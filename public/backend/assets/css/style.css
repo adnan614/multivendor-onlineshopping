@@ -3889,7 +3889,7 @@ input[type="button"].btn-block {
     -ms-flex-pack: justify;
     justify-content: space-between; }
 
-.navbar-brand {
+/* .navbar-brand {
   display: inline-block;
   padding-top: 0.33594rem;
   padding-bottom: 0.33594rem;
@@ -3898,7 +3898,7 @@ input[type="button"].btn-block {
   line-height: inherit;
   white-space: nowrap; }
   .navbar-brand:hover, .navbar-brand:focus {
-    text-decoration: none; }
+    text-decoration: none; } */
 
 .navbar-nav {
   display: -webkit-box;
