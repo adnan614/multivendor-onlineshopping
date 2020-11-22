@@ -40,9 +40,6 @@ class productController extends Controller
              $filename = time().'.'.$extension;
              $file->move('upload/',$filename);
              $productStore->image = $filename;
-        }else{
-             return $request;
-             $productStore->image = '';
         }
         $productStore->save();
 
@@ -85,27 +82,21 @@ class productController extends Controller
     }
 
     public function updateProduct(Request $request,$id)
-    {
+    {   
         $productUpdate = Product::find($id);
-
         $productUpdate->category_id = $request->input('category_id');
         $productUpdate->name = $request->input('name');
         $productUpdate->color = $request->input('color');
         $productUpdate->price = $request->input('price');
         $productUpdate->description = $request->input('description');
-
         if($request->hasFile('image')){
              $file = $request->file('image');
              $extension = $file->getClientOriginalExtension(); //getting image extension
              $filename = time().'.'.$extension;
              $file->move('upload/',$filename);
              $productUpdate->image = $filename;
-        }else{
-             return $request;
-             $productUpdate->image = '';
         }
-
         $productUpdate->save();
-        return redirect()->route('viewProduct');  
+        return redirect()->route('viewProduct'); 
     }
 }

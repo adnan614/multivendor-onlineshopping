@@ -6,15 +6,15 @@
         <h1 style="margin-top: 10px;"> <i class="fa fa-fw fa-edit" aria-hidden="true"></i> Update Product</h1>
         <br><br>
 
-<form method="post" action="{{ url('update.product'.$productEdit->id) }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('update.product',$productEdit->id) }}" enctype="multipart/form-data">
 
 @csrf
 
 <div class="form-group">
     <label for="id">Under Category</label>
-    <select name="id" id="id" class="form-control">
+    <select name="category_id" id="id" class="form-control">
     @foreach($categories as $cat)
-      <option value="{{$cat->id}}">{{$cat->name}}</option>
+      <option {{$productEdit->category_id == $cat->id ? 'selected':''}} value="{{$cat->id}}">{{$cat->name}}</option>
       @endforeach
     </select>
 
