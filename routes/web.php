@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', 'Frontend\HomeController@home');
-Route::get('/headerHome','Frontend\HomeController@headerHome')->name('headerHome');
+Route::get('/', 'Frontend\HomeController@home')->name('home');
+
 
 Route::get('/home','Backend\HomeController@index')->name('dashboard');
 
