@@ -49,7 +49,7 @@ class productController extends Controller
     public function viewProduct()
     {
 
-        $productShow = Product::all();
+        $productShow = Product::with('categoryRelation')->get();
         return view('backend.layouts.viewProduct',compact('productShow'));
     }
 
@@ -67,15 +67,6 @@ class productController extends Controller
         $productEdit = Product::find($id);
         $categories = Category::all();
         
-        // $categories_dropdown = "<option value='' selected disabled>Select</option>";
-        // foreach($categories as $cat){
-        //     if($cat->id==$productEdit->category_id){
-        //         $selected = "selected";
-        //     }else{
-        //         $selected = "";
-        //     }
-        //     $categories_dropdown .= "<option value='".$cat->id."' ".$selected.">".$cat->name."</option>";
-        // }  
         return view('backend.layouts.editProduct',compact('productEdit','categories'));
 
         

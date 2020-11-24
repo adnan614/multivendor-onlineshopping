@@ -19,9 +19,9 @@
                     <table class="table table-striped table-bordered table-hover">
                     <thead class="thead-dark">
                         <tr>
-                        <th>Product ID</th>
+                        <th>#</th>
                         <th>Product Name</th>
-                        <th>Category ID</th>
+                        <th>Category Name</th>
                         <th>Color</th>
                         <th>image</th>
                         <th>Price</th>
@@ -31,11 +31,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($productShow as $row)
+                        @foreach($productShow as $key=>$row)
                     <tr style="font-weight:500">
-                        <td>{{$row->id}}</td>
+                        <td>{{$key+1}}</td>
                         <td>{{ $row->name }}</td>
-                        <td>{{ $row->category_id}}</td>
+                        <td>{{$row->categoryRelation->name}}</td>
                         <td>{{ $row->color }}</td>
                         <td><img src="{{ asset('upload/'.$row->image) }}" width="75px" height="75px"></td>
                         <td>{{ $row->price }}</td>
