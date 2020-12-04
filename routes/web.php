@@ -28,6 +28,7 @@ Route::post('update.category{id}','Backend\CategoryController@updateCategory');
 // frontend products
 
 Route::get('/products','Frontend\ProductController@products')->name('products');
+Route::get('/categoryWiseShow/{id}','Frontend\HomeController@categoryWiseShow')->name('categoryWiseShow');
 
 // frontend productsDetails
 
