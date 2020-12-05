@@ -8,6 +8,18 @@ Route::get('/', 'Frontend\HomeController@home')->name('home');
 
 Route::get('/home','Backend\HomeController@index')->name('dashboard');
 
+Route::get('/logout','Backend\SellerController@logout')->name('logout');
+
+// seller account login & registration
+
+Route::get('/sellerRegister','Backend\SellerController@registerIndex');
+Route::get('/sellerLogin','Backend\SellerController@loginIndex');
+
+Route::post('/sellerRegister','Backend\SellerController@register')->name('sellerRegister');
+Route::post('/sellerLogin','Backend\SellerController@login')->name('login');
+Route::get('/sellerRegister','Backend\SellerController@sellerRegister')->name('register');
+
+
 // products seller //
 
 Route::get('/insertProduct','Backend\productController@insertProduct')->name('insertProduct');

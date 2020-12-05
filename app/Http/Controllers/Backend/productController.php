@@ -33,6 +33,7 @@ class productController extends Controller
         $productStore->color = $request->input('color');
         $productStore->price = $request->input('price');
         $productStore->description = $request->input('description');
+        $productStore->user_id = auth()->user()->id;
 
         if($request->hasFile('image')){
              $file = $request->file('image');

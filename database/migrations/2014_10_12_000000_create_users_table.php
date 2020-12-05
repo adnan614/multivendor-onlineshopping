@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('phone_number');
             $table->string('role');
             $table->string('status')->default('active');
+            $table->boolean('is_approved')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password',128);
             $table->rememberToken();

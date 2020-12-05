@@ -20,7 +20,8 @@ class CategoryController extends Controller
     {
         $categoryStore = Category::create([
             'name' =>  $request->input('name'),
-            'description' => $request->input('description')
+            'description' => $request->input('description'),
+            'user_id'=>auth()->user()->id
         ]);
 
         return redirect()->back();
@@ -46,6 +47,7 @@ class CategoryController extends Controller
 
           $categoryUpdate->name = $request->input('category_name');
           $categoryUpdate->description = $request->input('category_description');
+          
 
           $categoryUpdate->save();
           return redirect()->route('viewCategory'); 
