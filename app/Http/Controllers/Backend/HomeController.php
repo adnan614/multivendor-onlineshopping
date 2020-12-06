@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+use App\Models\Product;
+use App\Models\Category;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +10,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-       return view('backend.index');
+        $show_product_quantity = Product::where('user_id',auth()->user()->id)->count();
+        $show_category_quantity = Category::where('user_id',auth()->user()->id)->count();
+       
+       return view('backend.index',compact('show_product_quantity','show_category_quantity'));
     }
 }

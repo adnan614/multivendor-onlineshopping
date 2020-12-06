@@ -47,6 +47,7 @@ class CategoryController extends Controller
 
           $categoryUpdate->name = $request->input('category_name');
           $categoryUpdate->description = $request->input('category_description');
+          $categoryUpdate->user_id = auth()->user()->id;
           
 
           $categoryUpdate->save();

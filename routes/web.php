@@ -10,6 +10,11 @@ Route::get('/home','Backend\HomeController@index')->name('dashboard');
 
 Route::get('/logout','Backend\SellerController@logout')->name('logout');
 
+// customer login & registration
+
+Route::post('/customerSignup','Frontend\CustomerLoginController@signup')->name('signup');
+Route::post('/customerLogin','Frontend\CustomerLoginController@customerLogin')->name('customerLogin');
+
 // seller account login & registration
 
 Route::get('/sellerRegister','Backend\SellerController@registerIndex');

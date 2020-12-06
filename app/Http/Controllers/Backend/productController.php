@@ -81,6 +81,7 @@ class productController extends Controller
         $productUpdate->color = $request->input('color');
         $productUpdate->price = $request->input('price');
         $productUpdate->description = $request->input('description');
+        $productUpdate->user_id = auth()->user()->id;
         if($request->hasFile('image')){
              $file = $request->file('image');
              $extension = $file->getClientOriginalExtension(); //getting image extension
