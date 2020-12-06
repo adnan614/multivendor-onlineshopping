@@ -13,7 +13,11 @@ Route::get('/logout','Backend\SellerController@logout')->name('logout');
 // customer login & registration
 
 Route::post('/customerSignup','Frontend\CustomerLoginController@signup')->name('signup');
-Route::post('/customerLogin','Frontend\CustomerLoginController@customerLogin')->name('customerLogin');
+Route::post('/customerLogin','Frontend\CustomerLoginController@Login')->name('Login');
+
+// customer logout
+
+Route::get('/customer/logout','Frontend\CustomerLoginController@logout')->name('customerLogout');
 
 // seller account login & registration
 

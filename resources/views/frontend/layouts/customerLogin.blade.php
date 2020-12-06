@@ -8,10 +8,11 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
-						<form action="{{route('customerLogin')}}">
+						<form action="{{route('Login')}}" method="post">
 						@csrf
-							<input type="text" placeholder="Name" name="name"/>
+							
 							<input type="email" placeholder="Email Address"  name="email"/>
+							<input type="password" placeholder="password" name="password"/>
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\Controller;
 use App\User as AppUser;
 use Illuminate\Http\Request;
@@ -29,6 +31,21 @@ class CustomerLoginController extends Controller
 
         return view('frontend.layouts.customerLogin');
 
+    }
+
+    public function Login(Request $request)
+    {
+        $login = $request->only('email','password');
+        if (Auth::attempt($login)) {
+            // Authentication passed...
+            return redirect()->route('home');
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('customerLogin');
     }
 
 }

@@ -62,10 +62,17 @@
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="{{route('checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="{{route('cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+
+								@auth
+								<li style="margin-top: 10px;">{{auth()->user()->email}}</li>
+								<li><a href="{{ route('customerLogout') }}"><i class="fa fa-lock"></i>Logout </a></li>
+								@endauth
+								@guest
 								<li><a href="{{ route('customerLogin') }}"><i class="fa fa-lock"></i> Login</a></li>
+								@endguest
 							</ul>
 						</div>
-					</div>
+					</div>Login
 				</div>
 			</div>
 		</div><!--/header-middle-->
