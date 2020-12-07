@@ -23,7 +23,7 @@
       <!-- Username -->
       <label class="control-label"  for="username">Username</label>
       <div class="controls">
-        <input type="text" id="username" name="username" placeholder="Enter Username" class="input-xlarge">
+        <input type="text" id="username" class="form-control" name="username" placeholder="Enter Username" class="input-xlarge">
         
       </div>
     </div>
@@ -32,7 +32,7 @@
       <!-- E-mail -->
       <label class="control-label" for="email">E-mail</label>
       <div class="controls">
-        <input type="text" id="email" name="email" placeholder="Enter Valid Email" class="input-xlarge">
+        <input type="text" id="email" class="form-control" name="email" placeholder="Enter Valid Email" class="input-xlarge">
         
       </div>
     </div>
@@ -40,17 +40,33 @@
       <!-- E-mail -->
       <label class="control-label" for="address">Address</label>
       <div class="controls">
-        <input type="text" id="address" name="address" placeholder="Enter address" class="input-xlarge">
+        <input type="text" id="address" class="form-control" name="address" placeholder="Enter address" class="input-xlarge">
         
       </div>
     </div>
-    
+
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="shop_name">Shop Name</label>
+      <div class="controls">
+        <input type="text" id="shop_name" class="form-control" name="shop_name" placeholder="Enter Shop Name" class="input-xlarge">
+        
+      </div>
+    </div>
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="shop_location">Shop Location</label>
+      <div class="controls">
+        <input type="text" id="shop_location" class="form-control" name="shop_location" placeholder="Enter Shop Location" class="input-xlarge">
+        
+      </div>
+    </div>
  
     <div class="control-group">
       <!-- Password-->
       <label class="control-label" for="password">Password</label>
       <div class="controls">
-        <input type="password" id="password" name="password" placeholder="Enter password" class="input-xlarge">
+        <input type="password" id="password" class="form-control" name="password" placeholder="Enter password" class="input-xlarge">
      
       </div>
     </div>
@@ -59,16 +75,17 @@
       <!-- E-mail -->
       <label class="control-label" for="city">City</label>
       <div class="controls">
-        <input type="text" id="city" name="city" placeholder="Enter City" class="input-xlarge">
+        <input type="text" id="city" class="form-control" name="city" placeholder="Enter City" class="input-xlarge">
         
       </div>
     </div>
+    
 
     <div class="control-group">
       <!-- E-mail -->
       <label class="control-label" for="country">Country</label>
       <div class="controls">
-        <input type="text" id="country" name="country" placeholder="Enter Country" class="input-xlarge">
+        <input type="text" id="country" class="form-control" name="country" placeholder="Enter Country" class="input-xlarge">
         
       </div>
     </div>
@@ -76,7 +93,7 @@
       <!-- E-mail -->
       <label class="control-label" for="phone_number">Phone Number</label>
       <div class="controls">
-        <input type="number" id="phone_number" name="phone_number" placeholder="Enter Phone Number" class="input-xlarge">
+        <input type="number" id="phone_number" class="form-control" name="phone_number" placeholder="Enter Phone Number" class="input-xlarge">
         
       </div>
     </div>

@@ -15,9 +15,9 @@ class CreateSellersTable extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('shop_name');
             $table->string('shop_location');
-            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

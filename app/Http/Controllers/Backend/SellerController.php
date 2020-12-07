@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Seller;
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
@@ -17,8 +18,9 @@ class SellerController extends Controller
 
     public function register(Request $request)
     {
+        // dd($request->all());
 
-        User::create([
+       $user =  User::create([
              'name'=>$request->input('username'),
              'email'=>$request->input('email'),
              'password'=>bcrypt($request->input('password')),
@@ -28,6 +30,13 @@ class SellerController extends Controller
              'phone_number'=>$request->input('phone_number'),
              'role'=>'seller'
         ]);
+
+           Seller::create([
+            'user_id'=>$user->id,
+            'shop_name'=>$request->input('shop_name'),
+            'shop_location'=>$request->input('shop_location')
+        ]);
+        
 
         return view('backend.layouts.sellerLogin');
 

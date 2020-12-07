@@ -99,19 +99,15 @@
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
+								<a href="{{route('productDetails',$data->id)}}">
 										<div class="productinfo text-center">
 											<img src="{{ asset('upload/'.$data->image) }}" alt="" />
 											<h2>{{$data->price}}</h2>
 											<p>{{$data->name}}</p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
-										<div class="product-overlay">
-											<div class="overlay-content">
-												<h2>{{$data->price}}</h2>
-												<p>{{$data->name}}</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
+								</a>		
+										
 								</div>
 							
 							</div>

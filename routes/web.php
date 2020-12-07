@@ -53,7 +53,8 @@ Route::get('/categoryWiseShow/{id}','Frontend\HomeController@categoryWiseShow')-
 
 // frontend productsDetails
 
-Route::get('/productDetails','Frontend\ProductDetailsController@productDetails')->name('productDetails');
+Route::get('/productDetails/{id}','Frontend\ProductDetailsController@productDetails')->name('productDetails');
+
 
 //  checkout
 

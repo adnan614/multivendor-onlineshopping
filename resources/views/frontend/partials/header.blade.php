@@ -72,7 +72,7 @@
 								@endguest
 							</ul>
 						</div>
-					</div>Login
+					</div>
 				</div>
 			</div>
 		</div><!--/header-middle-->
@@ -95,7 +95,7 @@
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="{{route('products')}}">Products</a></li>
-										<li><a href="{{route('productDetails')}}">Product Details</a></li> 
+										<li><a href="#">Product Details</a></li> 
 										
                                     </ul>
                                 </li> 
