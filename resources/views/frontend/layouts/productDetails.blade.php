@@ -6,6 +6,17 @@
 
 <section>
 		<div class="container">
+			
+@if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
+
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
@@ -68,18 +79,21 @@
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
+							
+								
 								<h2>{{$productShow->name}}</h2>
 								
 								<span>
 									<span>BDT {{$productShow->price}} </span>
 									<label>Quantity:</label>
-									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart">
+									<input type="text" value="1" name="quantity"/>
+									<a href="{{route('cart.add',$productShow->id)}}" class="btn btn-default cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
-									</button>
+									</a>
 								</span>
 								<p><b>Shop:</b> {{$productShow->seller->shop_name}}</p>
+							
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->

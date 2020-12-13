@@ -21,7 +21,10 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $category_wise_products = Product::where('category_id',$id)->get();
+       
         return view('frontend.layouts.categoryWiseProducts',compact('category_wise_products','categories'));
+
+       
     }
    
 }

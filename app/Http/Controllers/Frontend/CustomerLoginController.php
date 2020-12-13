@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User as AppUser;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Illuminate\Http\Request;
 
 class CustomerLoginController extends Controller
@@ -44,7 +45,9 @@ class CustomerLoginController extends Controller
 
     public function logout()
     {
+    
         Auth::logout();
+        session()->forget('cart');
         return redirect()->route('customerLogin');
     }
 

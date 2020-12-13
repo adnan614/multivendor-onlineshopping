@@ -63,6 +63,8 @@ Route::get('/checkout','Frontend\CheckoutController@checkout')->name('checkout')
 // cart
 
 Route::get('/cart','Frontend\CartController@cart')->name('cart');
+Route::get('/cart/add/{id}','Frontend\CartController@addToCart')->name('cart.add');
+Route::get('/cart/remove/{id}','Frontend\CartController@CartRemove')->name('cart.remove');
 
 // customer login
 
