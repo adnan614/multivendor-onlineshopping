@@ -65,6 +65,7 @@ Route::get('/checkout','Frontend\CheckoutController@checkout')->name('checkout')
 Route::get('/cart','Frontend\CartController@cart')->name('cart');
 Route::get('/cart/add/{id}','Frontend\CartController@addToCart')->name('cart.add');
 Route::get('/cart/remove/{id}','Frontend\CartController@CartRemove')->name('cart.remove');
+Route::put('/cart/update/{id}','Frontend\CartController@CartUpdate')->name('cart.update');
 
 // customer login
 

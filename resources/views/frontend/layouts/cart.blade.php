@@ -45,11 +45,17 @@
 								<p>{{$data['price']}} BDT</p>
 							</td>
 							<td class="cart_quantity">
+							<form method="post" action="{{route('cart.update',$key)}}">
+
+								@csrf
+								@method('PUT')
 								<div class="cart_quantity_button">
 									
-									<input class="cart_quantity_input" class="form-control"
-									type="number" name="quantity" value="{{$data['quantity']}}">
+									<input class="cart_quantity_input"style="width: 80px;"
+									type="number" name="quantity" min="1" value="{{$data['quantity']}}">
+									<button type="submit" style="margin-left:20px;" class="cart_quantity_update"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 								</div>
+							</form>
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">{{$data['quantity']*$data['price']}} BDT</p>
@@ -59,7 +65,7 @@
 								<a class="cart_quantity_delete" href="{{route('cart.remove',$key)}}"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
-@endforeach
+                 @endforeach
 						
 						
 					</tbody>
