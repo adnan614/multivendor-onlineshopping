@@ -15,8 +15,7 @@
         <p class="alert alert-danger">{{$er}}</p>
 @endforeach
 @endif
-
-			
+	
 			<div class="table-responsive cart_info">
 				<table class="table table-condensed">
 					<thead>
@@ -30,6 +29,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						
 
 					@foreach(session()->get('cart')??[] as $key=>$data)
 				
@@ -65,6 +65,8 @@
 								<a class="cart_quantity_delete" href="{{route('cart.remove',$key)}}"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
+
+						
                  @endforeach
 						
 						
@@ -135,13 +137,15 @@
 						<a class="btn btn-default check_out" href="">Continue</a>
 					</div>
 				</div>
+
+				
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Cart Sub Total <span>$59</span></li>
-							<li>Eco Tax <span>$2</span></li>
+							<li>Cart Sub Total <span>BDT{{$total}}</span></li>
+							<li>Delivery Charge <span>BDT 60</span></li>
 							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span>$61</span></li>
+							<li>Total <span>BDT {{$total+60}}</span></li>
 						</ul>
 							<a class="btn btn-default update" href="">Update</a>
 							<a class="btn btn-default check_out" href="">Check Out</a>

@@ -11,7 +11,12 @@ class CartController extends Controller
 {
     public function cart()
     {
-        return view('frontend.layouts.cart');
+        $cart = session('cart') ?? [];
+        
+
+        $total = array_sum(array_column($cart,'sub_total'));
+ 
+        return view('frontend.layouts.cart',compact('total'));
     }
 
     public function addToCart($id)
@@ -22,6 +27,7 @@ class CartController extends Controller
        if($product)
        {
         $cartData = session()->get('cart');
+
     
         // if cart is empty then this the first product
         if(!$cartData) {
@@ -31,22 +37,22 @@ class CartController extends Controller
                         "name" => $product->name,
                         "quantity" => 1,
                         "price" => $product->price,
-                        "image" => $product->image
+                        "image" => $product->image,
+                        "sub_total"=>$product->price * 1
                     ]
             ];
-    
 
             session()->put('cart', $cart); 
             return redirect()->back()->with('message', 'Product added to cart successfully!');
-
 
         }
       
              // if cart not empty then check if this product exist then increment quantity
         if(isset($cartData[$id])) {
+          
             $cartData[$id]['quantity']++;
+            $cartData[$id]['sub_total']= $cartData[$id]['quantity'] * $cartData[$id]['price'];
             session()->put('cart', $cartData);
-
             return redirect()->back()->with('message', 'Product Increment to cart successfully!');
         }
         
@@ -55,9 +61,11 @@ class CartController extends Controller
             "name" => $product->name,
             "quantity" => 1,
             "price" => $product->price,
-            "image" => $product->image
+            "image" => $product->image,
+            "sub_total"=>$product->price * 1
            
         ];
+
         session()->put('cart', $cartData);
         return redirect()->back()->with('message', 'Product added to cart successfully!');
 
