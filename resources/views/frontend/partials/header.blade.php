@@ -38,7 +38,7 @@
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="{{route('checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="{{route('checkout.form')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="{{route('cart')}}"><i class="fa fa-shopping-cart"></i> Cart({{session('cart') ? count(session('cart')) : '0'}})</a></li>
 
 								@auth

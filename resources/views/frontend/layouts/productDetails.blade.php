@@ -86,7 +86,7 @@
 								<span>
 									<span>BDT {{$productShow->price}} </span>
 									<label>Quantity:</label>
-									<input type="text" value="1" name="quantity"/>
+									<input type="number" min="1" name="quantity"/>
 									<a href="{{route('cart.add',$productShow->id)}}" class="btn btn-default cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
