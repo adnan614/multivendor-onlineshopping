@@ -19,14 +19,14 @@ class CartController extends Controller
         return view('frontend.layouts.cart',compact('total'));
     }
 
-    public function addToCart($id)
+    public function addToCart(Request $request,$id)
     {
-      
        $product = Product::find($id);
         
        if($product)
        {
         $cartData = session()->get('cart');
+
 
     
         // if cart is empty then this the first product
@@ -34,24 +34,31 @@ class CartController extends Controller
           
             $cart = [
                     $id => [
-                        "name" => $product->name,
-                        "quantity" => 1,
-                        "price" => $product->price,
-                        "image" => $product->image,
-                        "sub_total"=>$product->price * 1
+                        'name' => $product->name,
+                        'quantity' => $request->quantity,
+                        'price' => $product->price,
+                        'image' => $product->image,
+                        'sub_total'=>$product->price * $request->quantity
                     ]
             ];
+
+          
 
             session()->put('cart', $cart); 
             return redirect()->back()->with('message', 'Product added to cart successfully!');
 
         }
-      
+
              // if cart not empty then check if this product exist then increment quantity
-        if(isset($cartData[$id])) {
-          
-            $cartData[$id]['quantity']++;
-            $cartData[$id]['sub_total']= $cartData[$id]['quantity'] * $cartData[$id]['price'];
+        if(isset($cartData[$id])) 
+        {
+        
+         
+        $cartData[$id]['quantity'] +$request->quantity;
+        
+
+          $cartData[$id]['sub_total']= $cartData[$id]['quantity'] * $cartData[$id]['price'];
+        
             session()->put('cart', $cartData);
             return redirect()->back()->with('message', 'Product Increment to cart successfully!');
         }
@@ -59,10 +66,10 @@ class CartController extends Controller
         // if item not exist in cart then add to cart with quantity = 1
         $cartData[$id] = [
             "name" => $product->name,
-            "quantity" => 1,
+            "quantity" => $request->quantity,
             "price" => $product->price,
             "image" => $product->image,
-            "sub_total"=>$product->price * 1
+            "sub_total"=>$product->price * $request->quantity
            
         ];
 

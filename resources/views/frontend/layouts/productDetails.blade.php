@@ -80,20 +80,21 @@
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 							
-								
+								<form method="post" action="{{route('cart.add',$productShow->id)}}">
+									@csrf
 								<h2>{{$productShow->name}}</h2>
 								
 								<span>
 									<span>BDT {{$productShow->price}} </span>
 									<label>Quantity:</label>
-									<input type="number" min="1" name="quantity"/>
-									<a href="{{route('cart.add',$productShow->id)}}" class="btn btn-default cart">
+									<input type="number" min="1" value="1" name="quantity"/>
+									<button type="submit" class="btn btn-default cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
-									</a>
+									</button>
 								</span>
 								<p><b>Shop:</b> {{$productShow->seller->shop_name}}</p>
-							
+								</form>
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->

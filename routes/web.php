@@ -66,9 +66,11 @@ Route::get('/productDetails/{id}','Frontend\ProductDetailsController@productDeta
 
 Route::get('/checkout','Frontend\CheckoutController@checkout')->name('checkout.form')->middleware('customer');
 
+Route::post('/add/shipping/details','Frontend\CheckoutController@addCheckout')->name('add.shipping');
+
 // cart
 
 Route::get('/cart','Frontend\CartController@cart')->name('cart');
-Route::get('/cart/add/{id}','Frontend\CartController@addToCart')->name('cart.add');
+Route::post('/cart/add/{id}','Frontend\CartController@addToCart')->name('cart.add');
 Route::get('/cart/remove/{id}','Frontend\CartController@CartRemove')->name('cart.remove');
 Route::put('/cart/update/{id}','Frontend\CartController@CartUpdate')->name('cart.update');

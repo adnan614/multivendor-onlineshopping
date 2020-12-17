@@ -15,6 +15,7 @@
         <p class="alert alert-danger">{{$er}}</p>
 @endforeach
 @endif
+
 	
 			<div class="table-responsive cart_info">
 				<table class="table table-condensed">

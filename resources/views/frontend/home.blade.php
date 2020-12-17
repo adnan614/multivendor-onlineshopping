@@ -107,9 +107,8 @@
 										<div class="productinfo text-center">
 											
 											<img src="{{ asset('upload/'.$data->image) }}" alt="" />
-											<h2>{{$data->price}}</h2>
+											<h2>BDT {{$data->price}}</h2>
 											<p>{{$data->name}}</p>
-											<a href="{{route('productDetails',$data->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 										</a>
 										
