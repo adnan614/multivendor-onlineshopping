@@ -38,13 +38,13 @@ class SellerController extends Controller
         ]);
         
 
-        return view('backend.layouts.sellerLogin');
+        return view('backend.layouts.Login');
 
     }
 
     public function loginIndex()
     {
-        return view('backend.layouts.sellerLogin');
+        return view('backend.layouts.Login');
     }
 
     public function sellerRegister()

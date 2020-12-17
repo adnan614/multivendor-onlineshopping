@@ -3,9 +3,7 @@
 @section('content')
 
 
-           
            <div class="container-fluid">
-               
                <div class="row justify-content-center">
                    <div class="col-lg-4 col-sm-6 col-xs-12">
                        <div class="white-box analytics-info">
@@ -16,7 +14,7 @@
                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                    </div>
                                </li>
-                               <li class="ml-auto"><span class="counter text-success">{{ $show_product_quantity }}</span></li>
+                               <li class="ml-auto"><span class="counter text-success">{{$show_product_quantity}}</span></li>
                            </ul>
                        </div>
                    </div>
@@ -50,9 +48,5 @@
                </div>
               
            </div>
-         
-       </div>
-    
-
 
 @stop

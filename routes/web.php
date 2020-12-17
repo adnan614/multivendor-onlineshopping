@@ -7,7 +7,7 @@ Route::get('/home', 'Frontend\HomeController@home')->name('home');
 
 
 Route::get('/seller','Backend\HomeController@index')->name('dashboard')->middleware('seller');
-
+// seller logout
 Route::get('/seller/logout','Backend\SellerController@logout')->name('logout')->middleware('seller');
 
 // customer login & registration
@@ -24,11 +24,20 @@ Route::get('/customer/logout','Frontend\CustomerLoginController@logout')->name('
 // seller account login & registration
 
 Route::get('/sellerRegister','Backend\SellerController@registerIndex');
-Route::get('/seller/login/form','Backend\SellerController@loginIndex')->name('login');
+Route::get('/seller/login/form','Backend\SellerController@loginIndex')->name('seller.login');
 
 Route::post('/seller/insert/register','Backend\SellerController@register')->name('sellerRegister');
 Route::post('/seller/login','Backend\SellerController@login')->name('login');
 Route::get('/seller/register','Backend\SellerController@sellerRegister')->name('register');
+
+// admin login
+
+Route::get('/admin/login/form','Backend\adminController@showLogin')->name('show.login');
+Route::post('/admin/login/','Backend\adminController@login')->name('login');
+
+//admin logout
+
+Route::get('/admin/logout','Backend\adminController@logout')->name('logout');
 
 
 // products seller //
@@ -74,3 +83,7 @@ Route::get('/cart','Frontend\CartController@cart')->name('cart');
 Route::post('/cart/add/{id}','Frontend\CartController@addToCart')->name('cart.add');
 Route::get('/cart/remove/{id}','Frontend\CartController@CartRemove')->name('cart.remove');
 Route::put('/cart/update/{id}','Frontend\CartController@CartUpdate')->name('cart.update');
+
+// admin 
+
+Route::get('/admin/','Backend\adminController@adminShow')->name('admin.dashboard');
