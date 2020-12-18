@@ -23,12 +23,12 @@ Route::get('/customer/logout','Frontend\CustomerLoginController@logout')->name('
 
 // seller account login & registration
 
-Route::get('/sellerRegister','Backend\SellerController@registerIndex');
+Route::get('/sellerRegister','Backend\SellerController@registerIndex')->name('register');
 Route::get('/seller/login/form','Backend\SellerController@loginIndex')->name('seller.login');
 
 Route::post('/seller/insert/register','Backend\SellerController@register')->name('sellerRegister');
 Route::post('/seller/login','Backend\SellerController@login')->name('login');
-Route::get('/seller/register','Backend\SellerController@sellerRegister')->name('register');
+
 
 // admin login
 
@@ -86,4 +86,9 @@ Route::put('/cart/update/{id}','Frontend\CartController@CartUpdate')->name('cart
 
 // admin 
 
-Route::get('/admin/','admin\adminController@adminShow')->name('admin.dashboard');
+Route::get('/admin','admin\adminController@adminShow')->name('admin.dashboard');
+Route::get('/admin/view/customer','admin\customerController@viewCustomer')->name('view.customer');
+Route::get('/admin/view/seller','admin\sellerController@viewSeller')->name('view.seller');
+Route::get('/admin/view/customer/delete{id}','admin\customerController@CustomerDelete')->name('customer.delete');
+Route::get('/admin/view/seller/delete{id}','admin\sellerController@sellerDelete')->name('seller.delete');
+

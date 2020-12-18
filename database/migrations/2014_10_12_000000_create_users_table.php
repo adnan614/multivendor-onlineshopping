@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('country');
             $table->string('address');
             $table->string('city');
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->string('role');
             $table->string('status')->default('active');
             $table->boolean('is_approved')->default(false);

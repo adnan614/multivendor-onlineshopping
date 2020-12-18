@@ -48,7 +48,7 @@
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="backend/assets/plugins/images/users/varun.jpg" alt="user-img" width="36"
+                                <img src="{{asset('backend/assets/plugins/images/users/varun.jpg')}}" alt="user-img" width="36"
                                     class="img-circle"><span class="text-white font-medium">{{auth()->user()->name}}</span></a>
 
                         </li>
@@ -68,7 +68,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.dashboard')}}"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu" style="color: grey;">Dashboard</span>
@@ -77,46 +77,23 @@
                     
                    
             <li style="margin-left: 30px; margin-top: 20px;">
-                <div href="#" data-toggle="collapse" data-target="#products" aria-expanded="true"style="color: grey;">
-                        
-                        <i class="fa fa-fw fa-tags" style="color: grey;"></i> Products
-                        <i class="fa fa-fw fa-caret-down"></i>
-                        
-                </div>
-                
-                <ul id="products" class="collapse" style="margin-top: 20px; margin-left:20px;" >
-                    <li style="margin-bottom: 17px;">
-                        <a href="#" style="color: grey;"> Insert Product </a>
-                    </li>
-                    <li>
-                        <a href="#" style="color: grey;"> View Products </a>
-                    </li>
-                </ul>
-                
+                <a href="{{route('view.customer')}}"style="color: grey;">    
+                        <i class="fa fa-users" style="color: grey;"></i> View Customers                    
+                </a>
+                 
             </li>
             <br>
             <li style="margin-left: 30px; margin-top: 20px;">
-                <div href="#" data-toggle="collapse" data-target="#category" aria-expanded="true"style="color: grey;">
+                <a href="{{route('view.seller')}}" style="color: grey;">
                         
-                        <i class="fa fa-fw fa-book" style="color: grey;"></i> Category
-                        <i class="fa fa-fw fa-caret-down"></i>
-                        
-                </div>
-                
-                <ul id="category" class="collapse" style="margin-top: 20px; margin-left:20px;" >
-                    <li style="margin-bottom: 17px;">
-                        <a href="#" style="color: grey;"> Insert Category </a>
-                    </li>
-                    <li>
-                        <a href="#" style="color: grey;"> View Category </a>
-                    </li>
-                </ul>
-                
+                        <i class="fa fa-users" style="color: grey;"></i>
+                        View Seller
+                </a>         
             </li>
             <br>
                         
                       
-                    </ul>
+            </ul>
 
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -124,52 +101,9 @@
             <!-- End Sidebar scroll-->
 </aside>
 
- <div class="page-wrapper">
-<div class="container-fluid"> 
-               <div class="row justify-content-center">
-                   <div class="col-lg-4 col-sm-6 col-xs-12">
-                       <div class="white-box analytics-info">
-                           <h3 class="box-title">Total Products</h3>
-                           <ul class="list-inline two-part d-flex align-items-center mb-0">
-                               <li>
-                                   <div id="sparklinedash"><canvas width="67" height="30"
-                                           style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                   </div>
-                               </li>
-                               <li class="ml-auto"><span class="counter text-success">11</span></li>
-                           </ul>
-                       </div>
-                   </div>
-                   <div class="col-lg-4 col-sm-6 col-xs-12">
-                       <div class="white-box analytics-info">
-                           <h3 class="box-title">Total Categories</h3>
-                           <ul class="list-inline two-part d-flex align-items-center mb-0">
-                               <li>
-                                   <div id="sparklinedash2"><canvas width="67" height="30"
-                                           style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                   </div>
-                               </li>
-                               <li class="ml-auto"><span class="counter text-purple">12</span></li>
-                           </ul>
-                       </div>
-                   </div>
-                   <div class="col-lg-4 col-sm-6 col-xs-12">
-                       <div class="white-box analytics-info">
-                           <h3 class="box-title">Unique Visitor</h3>
-                           <ul class="list-inline two-part d-flex align-items-center mb-0">
-                               <li>
-                                   <div id="sparklinedash3"><canvas width="67" height="30"
-                                           style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                   </div>
-                               </li>
-                               <li class="ml-auto"><span class="counter text-info">911</span>
-                               </li>
-                           </ul>
-                       </div>
-                   </div>
-               </div>
-              
-           </div>
+    <div class="page-wrapper">
+      
+           @yield('main.content')
 
     </div>  
 

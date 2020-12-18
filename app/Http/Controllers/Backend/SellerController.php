@@ -38,7 +38,7 @@ class SellerController extends Controller
         ]);
         
 
-        return view('backend.layouts.Login');
+        return redirect()->route('seller.login');
 
     }
 
@@ -47,11 +47,7 @@ class SellerController extends Controller
         return view('backend.layouts.Login');
     }
 
-    public function sellerRegister()
-    {
-        return view('backend.layouts.sellerRegister');
-    }
-
+    
     public function login(Request $request)
     {
         $login = $request->only('email', 'password');

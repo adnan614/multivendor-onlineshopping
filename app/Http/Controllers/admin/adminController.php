@@ -31,6 +31,6 @@ class adminController extends Controller
 
     public function adminShow()
     {
-        return view('admin.home');
+        return view('admin.index');
     }
 }
