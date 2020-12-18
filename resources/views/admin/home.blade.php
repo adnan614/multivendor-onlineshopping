@@ -91,6 +91,26 @@
                 </a>         
             </li>
             <br>
+
+            <li style="margin-left: 30px; margin-top: 20px;">
+                <div href="#" data-toggle="collapse" data-target="#slider" aria-expanded="true"style="color: grey;">
+                        
+                        <i class="fa fa-sliders" style="color: grey;"></i> Slider
+                        <i class="fa fa-fw fa-caret-down"></i>
+                        
+                </div>
+                
+                <ul id="slider" class="collapse" style="margin-top: 20px; margin-left:20px;" >
+                    <li style="margin-bottom: 17px;">
+                        <a href="{{route('insert.slider')}}" style="color: grey;"> Insert Slider </a>
+                    </li>
+                    <li>
+                        <a href="{{route('view.slider')}}" style="color: grey;"> View Slider </a>
+                    </li>
+                </ul>
+                
+            </li>
+            <br>
                         
                       
             </ul>

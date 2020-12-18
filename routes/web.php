@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', 'Frontend\HomeController@home')->name('home');
 
 
-Route::get('/seller','Backend\HomeController@index')->name('dashboard')->middleware('seller');
-// seller logout
-Route::get('/seller/logout','Backend\SellerController@logout')->name('logout')->middleware('seller');
-
 // customer login & registration
 
 Route::get('/customer/login','Frontend\CustomerLoginController@customerLogin')->name('customerLogin');
@@ -29,6 +25,10 @@ Route::get('/seller/login/form','Backend\SellerController@loginIndex')->name('se
 Route::post('/seller/insert/register','Backend\SellerController@register')->name('sellerRegister');
 Route::post('/seller/login','Backend\SellerController@login')->name('login');
 
+// seller logout
+
+Route::get('/seller/logout','Backend\SellerController@logout')->name('logout')->middleware('seller');
+
 
 // admin login
 
@@ -37,7 +37,11 @@ Route::post('/admin/login/','admin\adminController@login')->name('login');
 
 //admin logout
 
-Route::get('/admin/logout','admin\adminController@logout')->name('logout');
+Route::get('/admin/logout','admin\adminController@logout')->name('logout')->middleware('admin');
+
+// seller dashboard
+
+Route::get('/seller','Backend\HomeController@index')->name('dashboard')->middleware('seller');
 
 
 // products seller //
@@ -86,9 +90,23 @@ Route::put('/cart/update/{id}','Frontend\CartController@CartUpdate')->name('cart
 
 // admin 
 
-Route::get('/admin','admin\adminController@adminShow')->name('admin.dashboard');
-Route::get('/admin/view/customer','admin\customerController@viewCustomer')->name('view.customer');
-Route::get('/admin/view/seller','admin\sellerController@viewSeller')->name('view.seller');
-Route::get('/admin/view/customer/delete{id}','admin\customerController@CustomerDelete')->name('customer.delete');
-Route::get('/admin/view/seller/delete{id}','admin\sellerController@sellerDelete')->name('seller.delete');
+Route::group(['middleware'=>'admin'],function(){
+
+    Route::get('/admin','admin\adminController@adminShow')->name('admin.dashboard');
+    Route::get('/admin/view/customer','admin\customerController@viewCustomer')->name('view.customer');
+    Route::get('/admin/view/seller','admin\sellerController@viewSeller')->name('view.seller');
+    Route::get('/admin/view/customer/delete{id}','admin\customerController@CustomerDelete')->name('customer.delete');
+    Route::get('/admin/view/seller/delete/{id}','admin\sellerController@sellerDelete')->name('seller.delete');
+
+    Route::get('/admin/slider/insert','admin\sliderController@insertSliderForm')->name('insert.slider');
+
+    Route::post('admin/slider/add/slider','admin\sliderController@addSlider')->name('add.slider');
+
+    Route::get('admin/slider/view/slider','admin\sliderController@viewSlider')->name('view.slider');
+    Route::get('admin/slider/view/slider/delete/{id}','admin\sliderController@sliderDelete')->name('slider.delete');
+
+
+});
+
+
 
