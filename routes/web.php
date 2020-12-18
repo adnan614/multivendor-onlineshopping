@@ -32,12 +32,12 @@ Route::get('/seller/register','Backend\SellerController@sellerRegister')->name('
 
 // admin login
 
-Route::get('/admin/login/form','Backend\adminController@showLogin')->name('show.login');
-Route::post('/admin/login/','Backend\adminController@login')->name('login');
+Route::get('/admin/login/form','admin\adminController@showLogin')->name('show.login');
+Route::post('/admin/login/','admin\adminController@login')->name('login');
 
 //admin logout
 
-Route::get('/admin/logout','Backend\adminController@logout')->name('logout');
+Route::get('/admin/logout','admin\adminController@logout')->name('logout');
 
 
 // products seller //
@@ -86,4 +86,4 @@ Route::put('/cart/update/{id}','Frontend\CartController@CartUpdate')->name('cart
 
 // admin 
 
-Route::get('/admin/','Backend\adminController@adminShow')->name('admin.dashboard');
+Route::get('/admin/','admin\adminController@adminShow')->name('admin.dashboard');
