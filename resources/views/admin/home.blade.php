@@ -52,7 +52,7 @@
                                     class="img-circle"><span class="text-white font-medium">{{auth()->user()->name}}</span></a>
 
                         </li>
-                        <p style="color:aliceblue"><a href="{{route('logout')}}">Logout</a></p>
+                        <p style="color:aliceblue"><a href="{{route('admin.logout')}}">Logout</a></p>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->

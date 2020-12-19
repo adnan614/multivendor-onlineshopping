@@ -5,24 +5,24 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Order_product;
+
+use App\Models\Payment;
 
 class CheckoutController extends Controller
 {
     public function checkout()
     {
-        $cart = session('cart') ?? [];
-        
-
-        $total = array_sum(array_column($cart,'sub_total'));
  
-        return view('frontend.layouts.checkout',compact('total'));
+        return view('frontend.layouts.checkout');
         
     }
 
     public function addCheckout(Request $request)
     {
-        dd(session()->get('cart'));
-        Order::create([
+       
+       $cart = session('cart');
+       $order =  Order::create([
             'user_id' => auth()->user()->id,
             'email'=>$request->input('email'),
             'name'=>$request->input('name'),
@@ -32,9 +32,30 @@ class CheckoutController extends Controller
             'email'=>$request->input('email'),
             'phone_number'=>$request->input('phone_number'),
             'order_status'=>'pending',
-            'payment_method'=>'handCash',
-            'grant_total'=>session()->get('price')
+            'grant_total'=>array_sum(array_column($cart,'sub_total'))
         ]);
+
+
+        foreach ($cart as $item)
+        {
+
+            $order_products = Order_product::create([
+             
+                'order_id'=>$order->id,
+                'seller_id'=>1,
+                'product_id'=>$item['id'],
+                'product_price'=>$item['price']
+            ]);
+            
+        }
+      
+
+         Payment::create([
+
+            'order_id'=>$order->id,
+            'amount'=>array_sum(array_column($cart,'sub_total')),
+            'payment_method'=>$request->input('payment_method')
+         ]);
 
         return redirect()->back();
     }

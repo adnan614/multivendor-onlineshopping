@@ -17,11 +17,17 @@ class adminController extends Controller
     public function login(Request $request)
     {
         $login = $request->only('email', 'password');
-
         if (Auth::attempt($login)) {
-            // Authentication passed...
-            return redirect()->route('admin.dashboard');
+
+            if(auth()->user()->role === 'seller'){
+                return redirect()->route('dashboard');
+            }else{
+                return redirect()->route('admin.dashboard');
+
+            }
+            // Authentication passed.. 
         }
+        return redirect()->back();  
     }
 
     public function logout()

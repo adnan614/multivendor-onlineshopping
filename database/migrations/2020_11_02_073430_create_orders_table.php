@@ -23,7 +23,6 @@ class CreateOrdersTable extends Migration
             $table->string('country');
             $table->string('phone_number');
             $table->string('order_status')->default('pending');
-            $table->string('payment_method');
             $table->integer('grant_total');
             $table->timestamps();
         });

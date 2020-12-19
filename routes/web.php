@@ -37,7 +37,7 @@ Route::post('/admin/login/','admin\adminController@login')->name('login');
 
 //admin logout
 
-Route::get('/admin/logout','admin\adminController@logout')->name('logout')->middleware('admin');
+Route::get('/admin/logout','admin\adminController@logout')->name('admin.logout')->middleware('admin');
 
 // seller dashboard
 

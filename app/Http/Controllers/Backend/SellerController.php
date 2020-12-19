@@ -51,16 +51,20 @@ class SellerController extends Controller
     public function login(Request $request)
     {
         $login = $request->only('email', 'password');
-
         if (Auth::attempt($login)) {
-            // Authentication passed...
+
+            if(auth()->user()->role ==='admin'){
+                return redirect()->route('admin.dashboard'); 
+            }
             return redirect()->route('dashboard');
         }
+
+        return redirect()->back();  
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('seller.login');
     }
 }
