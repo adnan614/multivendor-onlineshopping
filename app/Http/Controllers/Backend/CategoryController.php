@@ -30,7 +30,7 @@ class CategoryController extends Controller
 
     public function viewCategory()
     {
-        $categoryShow = Category::all();
+        $categoryShow = Category::where('user_id',auth()->user()->id)->get();
         return view('backend.layouts.viewCategory',compact('categoryShow'));
 
     }

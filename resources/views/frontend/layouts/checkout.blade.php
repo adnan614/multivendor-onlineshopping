@@ -23,12 +23,11 @@
 									<input type="text" placeholder="Enter Name" name="name">
 									<input type="text" placeholder="Enter address" name="address">
 									<input type="text" placeholder="Enter city" name="city">
-									<input type="text" placeholder="Enter country" name="country">
 									<input type="number" placeholder="Enter Phone Number" name="phone_number">
 									<select name="payment_method" id="payment_method" class="form-control">
                                    <option value="0">Select a payment method</option>
 										
-										<option value="1">Cash On Delivery</option>
+										<option>Cash On Delivery</option>
 										
 										
 									</select>

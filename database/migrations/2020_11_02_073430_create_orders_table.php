@@ -20,7 +20,6 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('city');
-            $table->string('country');
             $table->string('phone_number');
             $table->string('order_status')->default('pending');
             $table->integer('grant_total');

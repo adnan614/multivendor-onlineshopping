@@ -23,7 +23,7 @@ Route::get('/sellerRegister','Backend\SellerController@registerIndex')->name('re
 Route::get('/seller/login/form','Backend\SellerController@loginIndex')->name('seller.login');
 
 Route::post('/seller/insert/register','Backend\SellerController@register')->name('sellerRegister');
-Route::post('/seller/login','Backend\SellerController@login')->name('login');
+Route::post('/seller/login','Backend\SellerController@login')->name('login.seller');
 
 // seller logout
 
@@ -33,7 +33,7 @@ Route::get('/seller/logout','Backend\SellerController@logout')->name('logout')->
 // admin login
 
 Route::get('/admin/login/form','admin\adminController@showLogin')->name('show.login');
-Route::post('/admin/login/','admin\adminController@login')->name('login');
+Route::post('/admin/login/','admin\adminController@login')->name('login.admin');
 
 //admin logout
 

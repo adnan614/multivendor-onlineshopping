@@ -19,10 +19,10 @@ class adminController extends Controller
         $login = $request->only('email', 'password');
         if (Auth::attempt($login)) {
 
-            if(auth()->user()->role === 'seller'){
-                return redirect()->route('dashboard');
-            }else{
+            if(auth()->user()->role === 'admin'){
                 return redirect()->route('admin.dashboard');
+            }else{
+                return redirect()->to('/admin/login/form');
 
             }
             // Authentication passed.. 

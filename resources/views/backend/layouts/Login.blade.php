@@ -16,7 +16,7 @@
    <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <h3>Login Form </h3>
-                    <form action="{{route('login')}}" method="post">
+                    <form action="{{route('login.seller')}}" method="post">
                         @csrf
                         <div class="form-group">
                             <input type="text" class="form-control"  placeholder="Your Email *" name="email"  />

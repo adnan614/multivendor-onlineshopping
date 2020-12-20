@@ -11,7 +11,7 @@ use Throwable;
 class productController extends Controller
 {
     public function insertProduct(){
-        $categories=Category::all();
+        $categories=Category::where('user_id',auth()->user()->id)->get();
         return view('backend.layouts.insertProduct',compact('categories'));
     }
 
@@ -50,7 +50,7 @@ class productController extends Controller
     public function viewProduct()
     {
 
-        $productShow = Product::with('categoryRelation')->get();
+        $productShow = Product::where('user_id',auth()->user()->id)->with('categoryRelation')->get();
         return view('backend.layouts.viewProduct',compact('productShow'));
     }
 

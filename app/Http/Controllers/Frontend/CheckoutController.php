@@ -28,7 +28,6 @@ class CheckoutController extends Controller
             'name'=>$request->input('name'),
             'address'=>$request->input('address'),
             'city'=>$request->input('city'),
-            'country'=>$request->input('country'),
             'email'=>$request->input('email'),
             'phone_number'=>$request->input('phone_number'),
             'order_status'=>'pending',
@@ -38,11 +37,10 @@ class CheckoutController extends Controller
 
         foreach ($cart as $item)
         {
-
             $order_products = Order_product::create([
              
                 'order_id'=>$order->id,
-                'seller_id'=>1,
+                'seller_id'=>$item['seller_id'],
                 'product_id'=>$item['id'],
                 'product_price'=>$item['price']
             ]);

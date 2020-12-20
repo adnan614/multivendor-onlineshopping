@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Seller;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,9 @@ class CartController extends Controller
     }
 
     public function addToCart(Request $request,$id)
-    {
+    { 
+       
        $product = Product::find($id);
-        
        if($product)
        {
         $cartData = session()->get('cart');
@@ -34,6 +35,7 @@ class CartController extends Controller
             $cart = [
                     $id => [
                         'id'=>$product->id,
+                        'seller_id'=>$product->user_id,
                         'name' => $product->name,
                         'quantity' => $request->quantity,
                         'price' => $product->price,
@@ -61,6 +63,7 @@ class CartController extends Controller
         // if item not exist in cart then add to cart with quantity = 1
         $cartData[$id] = [
             "id"=>$product->id,
+            'seller_id'=>$product->user_id,
             "name" => $product->name,
             "quantity" => $request->quantity,
             "price" => $product->price,

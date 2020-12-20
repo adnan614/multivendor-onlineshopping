@@ -18,7 +18,6 @@ class SellerController extends Controller
 
     public function register(Request $request)
     {
-        // dd($request->all());
 
        $user =  User::create([
              'name'=>$request->input('username'),
@@ -51,14 +50,17 @@ class SellerController extends Controller
     public function login(Request $request)
     {
         $login = $request->only('email', 'password');
+        
         if (Auth::attempt($login)) {
 
-            if(auth()->user()->role ==='admin'){
-                return redirect()->route('admin.dashboard'); 
-            }
-            return redirect()->route('dashboard');
-        }
+            if(auth()->user()->role === 'seller'){
+                return redirect()->to('/seller');
+            }else{
+                return redirect()->to('/seller/login/form');
 
+            }
+            // Authentication passed.. 
+        }
         return redirect()->back();  
     }
 
