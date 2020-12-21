@@ -27,7 +27,6 @@
       <option value="{{$cat->id}}">{{$cat->name}}</option>
       @endforeach
     </select>
-
   </div>
   <div class="form-group">
     <label for="name">Product Name</label>

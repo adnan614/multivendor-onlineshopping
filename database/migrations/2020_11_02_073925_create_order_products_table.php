@@ -18,7 +18,10 @@ class CreateOrderProductsTable extends Migration
             $table->foreignId('order_id');
             $table->foreignId('seller_id');
             $table->foreignId('product_id');
+            $table->string('product_name');
+            $table->integer('product_quantity');
             $table->integer('product_price');
+            $table->string('sub_total');
             $table->timestamps();
         });
     }

@@ -25,7 +25,7 @@
                         <th> Category Delete </th>
                         <th> Category Edit </th>
                         </tr>
-                    </thead>
+                   </thead>
                     <tbody>
                         @foreach($categoryShow as $row)
                     <tr style="font-weight:500">

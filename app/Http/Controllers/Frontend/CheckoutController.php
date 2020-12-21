@@ -42,14 +42,16 @@ class CheckoutController extends Controller
                 'order_id'=>$order->id,
                 'seller_id'=>$item['seller_id'],
                 'product_id'=>$item['id'],
-                'product_price'=>$item['price']
+                'product_name'=>$item['name'],
+                'product_quantity'=>$item['quantity'],
+                'product_price'=>$item['price'],
+                'sub_total'=>$item['price'] * $item['quantity'],
             ]);
             
         }
       
 
          Payment::create([
-
             'order_id'=>$order->id,
             'amount'=>array_sum(array_column($cart,'sub_total')),
             'payment_method'=>$request->input('payment_method')

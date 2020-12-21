@@ -52,6 +52,16 @@
                 
             </li>
             <br>
+
+            <li style="margin-left: 30px; margin-top: 20px;">
+                    <a href="{{route('view.order')}}" style="color: grey;">
+                        
+                        <i class="fa fa-first-order" aria-hidden="true" style="color: grey;"></i> View Order
+                        
+                   </a>
+
+            </li>
+            
                         
                       
                     </ul>

@@ -104,6 +104,7 @@ Route::group(['middleware'=>'admin'],function(){
 
     Route::get('admin/slider/view/slider','admin\sliderController@viewSlider')->name('view.slider');
     Route::get('admin/slider/view/slider/delete/{id}','admin\sliderController@sliderDelete')->name('slider.delete');
+    Route::get('/seller/view/order/','Backend\OrderController@viewOrder')->name('view.order');
 
 
 });
