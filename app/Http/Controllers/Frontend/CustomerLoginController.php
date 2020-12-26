@@ -21,7 +21,7 @@ class CustomerLoginController extends Controller
     {
         $req->validate([
             'name'=>'required',
-            'email'=>'required | unique:users',
+            'email'=>'required',
             'address'=>'required',
             'password'=>'required | min:5',
             'city'=>'required | min:3',
@@ -56,7 +56,7 @@ class CustomerLoginController extends Controller
         $login = $request->only('email','password');
         if (Auth::attempt($login)) {
             // Authentication passed...
-            return redirect()->route('home');
+            return redirect()->route('home')->with('message','Logged in Successfully!');
         }
         return redirect()->back()->withErrors('Invalid Credentials');
     }

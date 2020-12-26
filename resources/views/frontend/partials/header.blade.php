@@ -38,7 +38,7 @@
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								@auth
-								<li><a href="#"><i class="fa fa-user"></i>My Account</a></li>
+								<li><a href="{{route('my.account')}}"><i class="fa fa-user"></i>My Account</a></li>
 								@endauth
 								
 								<li><a href="{{route('checkout.form')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>

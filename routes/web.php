@@ -56,12 +56,16 @@ Route::group(['middleware'=>'seller'],function(){
     
 });
 
+// frontend my account
+
+Route::get('/MyAccount/','Frontend\myAccountController@myAccount')->name('my.account');
+Route::get('/MyAccount/editMyAccount','Frontend\myAccountController@editMyAccount')->name('edit.account');
+Route::put('/MyAccount/edit/','Frontend\myAccountController@edit')->name('edit');
+
 // frontend shop
 
 Route::get('/shop','Frontend\shopController@viewShop')->name('shop');
 Route::get('/shop/{user_id}','Frontend\shopController@shopWiseShow')->name('shopWise.show');
-
-
 
 // frontend products
 
