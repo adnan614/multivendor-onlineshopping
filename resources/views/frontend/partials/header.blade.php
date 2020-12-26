@@ -42,6 +42,7 @@
 								@endauth
 								
 								<li><a href="{{route('checkout.form')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="{{route('seller.login')}}"><i class="fa fa-user"></i> Seller Zone</a></li>
 								
 								<li><a href="{{route('cart')}}"><i class="fa fa-shopping-cart"></i> Cart({{session('cart') ? count(session('cart')) : '0'}})</a></li>
 
@@ -74,12 +75,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="{{ route('home') }}" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="{{route('products')}}">Products</a></li>
-										<li><a href="#">Product Details</a></li> 
-										
-                                    </ul>
+								<li><a href="{{route('shop')}}">All Shop</a>
                                 </li> 
 								
 								

@@ -13,6 +13,16 @@
                </h3><!-- panel-title finish --> 
             </div>
 
+@if(session()->has('message'))
+    <p class="alert alert-danger">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
+
             <br>
             <div class="panel-body">
                 <div class="table-responsive">
@@ -41,12 +51,12 @@
                         <td>{{ $row->price }}</td>
                         <td><span class="label-custom label label-success">Active</span></td>
                         <td>
-                        <a href="{{ url('delete.product'.$row->id) }}">
+                        <a class="btn btn-danger" href="{{ url('delete.product'.$row->id) }}">
                         <i class="fa fa-trash" aria-hidden="true"></i> Delete
                         </a>
                         </td>
                         <td>
-                          <a href="{{ url('edit.product'.$row->id)}}">
+                          <a class="btn btn-primary" href="{{ url('edit.product'.$row->id)}}">
                            <i class="fa fa-tags" aria-hidden="true"></i> Edit
                            </a> 
                         </td>

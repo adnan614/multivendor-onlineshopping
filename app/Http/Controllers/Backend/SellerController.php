@@ -18,6 +18,17 @@ class SellerController extends Controller
 
     public function register(Request $request)
     {
+        $request->validate([
+            'username'=>'required',
+            'email'=>'required | unique:users',
+            'address'=>'required',
+            'shop_name'=>'required|min:2',
+            'shop_location'=>'required | min: 3',
+            'image'=>'required',
+            'city'=>'required | min:3',
+            'country'=>'required | min:3',
+            'phone_number'=>'required | min:11 | unique:users',
+        ]);
 
        $user =  User::create([
              'name'=>$request->input('username'),
@@ -30,14 +41,22 @@ class SellerController extends Controller
              'role'=>'seller'
         ]);
 
-           Seller::create([
-            'user_id'=>$user->id,
-            'shop_name'=>$request->input('shop_name'),
-            'shop_location'=>$request->input('shop_location')
-        ]);
-        
+           $sellerStore = new Seller();
 
-        return redirect()->route('seller.login');
+           $sellerStore->user_id = $user->id;
+           $sellerStore->shop_name = $request->input('shop_name');
+           $sellerStore->shop_location = $request->input('shop_location');
+           if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); //getting image extension
+            $filename = time().'.'.$extension;
+            $file->move('upload/',$filename);
+            $sellerStore->image = $filename;
+       }
+        $sellerStore->save();
+
+
+        return redirect()->route('seller.login')->with('message','Registration Successfully Done!'); 
 
     }
 
@@ -49,19 +68,24 @@ class SellerController extends Controller
     
     public function login(Request $request)
     {
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required',
+
+        ]);
+        
         $login = $request->only('email', 'password');
         
         if (Auth::attempt($login)) {
 
             if(auth()->user()->role === 'seller'){
-                return redirect()->to('/seller');
+                return redirect()->to('/seller')->with('message','Logged in Successfully!');
             }else{
-                return redirect()->to('/seller/login/form');
+                return redirect()->to('/seller/login/form')->with('message','You need an seller account!');
 
-            }
-            // Authentication passed.. 
+            } 
         }
-        return redirect()->back();  
+        return redirect()->back()->withErrors('Invalid Credentials'); 
     }
 
     public function logout()

@@ -11,8 +11,7 @@ class HomeController extends Controller
 {
     public function index(){
         $show_product_quantity = Product::where('user_id',auth()->user()->id)->count();
-        $show_category_quantity = Category::where('user_id',auth()->user()->id)->count();
        
-       return view('backend.index',compact('show_product_quantity','show_category_quantity'));
+       return view('backend.index',compact('show_product_quantity'));
     }
 }

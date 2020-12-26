@@ -38,6 +38,7 @@ class CartController extends Controller
                         'seller_id'=>$product->user_id,
                         'name' => $product->name,
                         'quantity' => $request->quantity,
+                        'product_size' => $request->product_size,
                         'price' => $product->price,
                         'image' => $product->image,
                         'sub_total'=>$product->price * $request->quantity
@@ -50,6 +51,7 @@ class CartController extends Controller
             return redirect()->back()->with('message', 'Product added to cart successfully!');
 
         }
+
         if(isset($cartData[$id])) 
         {
        
@@ -66,6 +68,7 @@ class CartController extends Controller
             'seller_id'=>$product->user_id,
             "name" => $product->name,
             "quantity" => $request->quantity,
+            'product_size' => $request->product_size,
             "price" => $product->price,
             "image" => $product->image,
             "sub_total"=>$product->price * $request->quantity

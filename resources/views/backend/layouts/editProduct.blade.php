@@ -6,6 +6,8 @@
         <h1 style="margin-top: 10px;"> <i class="fa fa-fw fa-edit" aria-hidden="true"></i> Update Product</h1>
         <br><br>
 
+
+
 <form method="post" action="{{ route('update.product',$productEdit->id) }}" enctype="multipart/form-data">
 
 @csrf

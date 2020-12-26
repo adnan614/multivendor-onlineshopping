@@ -12,6 +12,11 @@ class Order_product extends Model
    {
        return $this->belongsTo(Order::class);
    }
+
+   public function payment()
+   {
+       return $this->belongsTo(Payment::class);
+   }
 }
 
 

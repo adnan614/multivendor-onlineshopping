@@ -24,6 +24,7 @@
 							<td class="image">Item</td>
 							<td class="description"></td>
 							<td class="price">Price</td>
+							<td class="price">Size</td>
 							<td class="quantity">Quantity</td>
 							<td class="total">Total</td>
 							<td></td>
@@ -43,6 +44,9 @@
 							</td>
 							<td class="cart_price">
 								<p>{{$data['price']}} BDT</p>
+							</td>
+							<td class="cart_price">
+								<p>{{$data['product_size']}}</p>
 							</td>
 							<td class="cart_quantity">
 							<form method="post" action="{{route('cart.update',$key)}}">

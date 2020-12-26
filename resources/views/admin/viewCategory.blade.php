@@ -1,6 +1,6 @@
-@extends('backend.home')
+@extends('admin.home')
 
-@section('content')
+@section('main.content')
 
 <div class="row">
     <div class="col-lg-12">
@@ -12,6 +12,15 @@
                 
                </h3>
             </div>
+@if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
 
             <br>
             <div class="panel-body">
@@ -19,26 +28,25 @@
                     <table class="table table-striped table-bordered table-hover">
                     <thead class="thead-dark">
                         <tr>
-                        <th>Category ID</th>
+                        <th>#</th>
                         <th>category Name</th>
                         <th>Status</th>
-                        <th> Category Delete </th>
-                        <th> Category Edit </th>
+                        <th> Action </th>
                         </tr>
                    </thead>
                     <tbody>
-                        @foreach($categoryShow as $row)
+                        @foreach($categoryShow as $key=> $row)
                     <tr style="font-weight:500">
-                        <td>{{$row->id}}</td>
+                        <td>{{$key+1}}</td>
                         <td>{{$row->name }}</td>
                         <td><span class="label-custom label label-success">Active</span></td>
                         <td>
-                        <a href="{{ url('delete.category'.$row->id) }}">
+                        <a class="btn btn-danger" href="{{ url('delete.category'.$row->id) }}">
                         <i class="fa fa-trash" aria-hidden="true"></i> Delete
                         </a>
-                        </td>
-                        <td>
-                          <a href="{{ url('edit.category'.$row->id) }}">
+                        
+                    
+                          <a class="btn btn-primary" href="{{ url('edit.category'.$row->id) }}">
                            <i class="fa fa-tags" aria-hidden="true"></i> Edit
                            </a> 
                         </td>

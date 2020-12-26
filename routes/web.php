@@ -54,20 +54,17 @@ Route::group(['middleware'=>'seller'],function(){
     Route::post('/addProduct','Backend\productController@addProduct')->name('addProduct');
     Route::post('/update/product/{id}','Backend\productController@updateProduct')->name('update.product');
     
-    // Category seller//
-    Route::get('/insertCategory','Backend\CategoryController@insertCategory')->name('insertCategory');
-    Route::post('/storeCategory','Backend\CategoryController@storeCategory')->name('storeCategory');
-    Route::get('/viewCategory','Backend\CategoryController@viewCategory')->name('viewCategory');
-    Route::get('edit.category{id}','Backend\CategoryController@editCategory');
-    Route::get('delete.category{id}','Backend\CategoryController@deleteCategory');
-    Route::post('update.category{id}','Backend\CategoryController@updateCategory');
 });
+
+// frontend shop
+
+Route::get('/shop','Frontend\shopController@viewShop')->name('shop');
+Route::get('/shop/{user_id}','Frontend\shopController@shopWiseShow')->name('shopWise.show');
 
 
 
 // frontend products
 
-Route::get('/products','Frontend\ProductController@products')->name('products');
 Route::get('/categoryWiseShow/{id}','Frontend\HomeController@categoryWiseShow')->name('categoryWiseShow');
 
 // frontend productsDetails
@@ -78,6 +75,7 @@ Route::get('/productDetails/{id}','Frontend\ProductDetailsController@productDeta
 //  checkout
 
 Route::get('/checkout','Frontend\CheckoutController@checkout')->name('checkout.form')->middleware('customer');
+
 
 Route::post('/add/shipping/details','Frontend\CheckoutController@addCheckout')->name('add.shipping');
 
@@ -93,6 +91,14 @@ Route::put('/cart/update/{id}','Frontend\CartController@CartUpdate')->name('cart
 Route::group(['middleware'=>'admin'],function(){
 
     Route::get('/admin','admin\adminController@adminShow')->name('admin.dashboard');
+     // Category admin//
+     Route::get('/insertCategory','admin\CategoryController@insertCategory')->name('insertCategory');
+     Route::post('/storeCategory','admin\CategoryController@storeCategory')->name('storeCategory');
+     Route::get('/viewCategory','admin\CategoryController@viewCategory')->name('viewCategory');
+     Route::get('edit.category{id}','admin\CategoryController@editCategory');
+     Route::get('delete.category{id}','admin\CategoryController@deleteCategory');
+     Route::post('update.category{id}','admin\CategoryController@updateCategory');
+
     Route::get('/admin/view/customer','admin\customerController@viewCustomer')->name('view.customer');
     Route::get('/admin/view/seller','admin\sellerController@viewSeller')->name('view.seller');
     Route::get('/admin/view/customer/delete{id}','admin\customerController@CustomerDelete')->name('customer.delete');

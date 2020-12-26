@@ -13,7 +13,18 @@
   <body>
   <div class="row col-md-6 offset-md-3">
 
-  <form class="form-horizontal  col-md-6 offset-md-3" action="{{route('sellerRegister')}}" method="POST">
+@if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
+
+
+  <form class="form-horizontal  col-md-6 offset-md-3" action="{{route('sellerRegister')}}" method="POST" enctype="multipart/form-data">
       @csrf
   <fieldset>
     <div id="legend" style="margin-top: 46px;">
@@ -32,7 +43,7 @@
       <!-- E-mail -->
       <label class="control-label" for="email">E-mail</label>
       <div class="controls">
-        <input type="text" id="email" class="form-control" name="email" placeholder="Enter Valid Email" class="input-xlarge">
+        <input type="email" id="email" class="form-control" name="email" placeholder="Enter Valid Email" class="input-xlarge">
         
       </div>
     </div>
@@ -61,6 +72,10 @@
         
       </div>
     </div>
+    <div class="form-group">
+    <label for="image">Shop Logo</label>
+    <input type="file"  id="image" name="image">
+  </div>
  
     <div class="control-group">
       <!-- Password-->

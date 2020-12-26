@@ -19,6 +19,16 @@ class CustomerLoginController extends Controller
 
     public function signup(Request $req)
     {
+        $req->validate([
+            'name'=>'required',
+            'email'=>'required | unique:users',
+            'address'=>'required',
+            'password'=>'required | min:5',
+            'city'=>'required | min:3',
+            'country'=>'required | min:3',
+            'phone_number'=>'required | min:11 | unique:users'
+        ]);
+
         User::create([
             'name'=>$req->input('name'),
             'email'=>$req->input('email'),
@@ -30,17 +40,25 @@ class CustomerLoginController extends Controller
             'role'=>'customer'
         ]);
 
-        return view('frontend.layouts.customerLogin');
+        return redirect()->route('customerLogin')->with('message','Registration Successfully Done!');
 
     }
 
     public function Login(Request $request)
     {
+        $request->validate([
+           
+            'email'=>'required',
+             'password'=>'required'
+           
+        ]);
+
         $login = $request->only('email','password');
         if (Auth::attempt($login)) {
             // Authentication passed...
             return redirect()->route('home');
         }
+        return redirect()->back()->withErrors('Invalid Credentials');
     }
 
     public function logout()

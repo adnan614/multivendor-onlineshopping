@@ -17,6 +17,7 @@ class CreateSellersTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('shop_name');
+            $table->string('image');
             $table->string('shop_location');
             $table->timestamps();
         });

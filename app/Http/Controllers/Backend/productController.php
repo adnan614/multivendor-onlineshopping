@@ -10,8 +10,9 @@ use Throwable;
 
 class productController extends Controller
 {
-    public function insertProduct(){
-        $categories=Category::where('user_id',auth()->user()->id)->get();
+    public function insertProduct()
+    {
+        $categories=Category::all();
         return view('backend.layouts.insertProduct',compact('categories'));
     }
 
@@ -60,7 +61,7 @@ class productController extends Controller
           $productDelete = Product::find($id);
           $productDelete->delete();
 
-          return redirect()->back();
+          return redirect()->back()->with('message','Deleted Product Successfully');
     }
 
     public function editProduct($id)
@@ -74,7 +75,14 @@ class productController extends Controller
     }
 
     public function updateProduct(Request $request,$id)
-    {   
+    {  
+         $request->validate([
+        'name'=>'required',
+        'price'=>'required|min:3',
+        'category_id'=>'required',
+        'color'=>'required'
+    ]);
+                  
         $productUpdate = Product::find($id);
         $productUpdate->category_id = $request->input('category_id');
         $productUpdate->name = $request->input('name');
@@ -90,6 +98,6 @@ class productController extends Controller
              $productUpdate->image = $filename;
         }
         $productUpdate->save();
-        return redirect()->route('viewProduct'); 
+        return redirect()->route('viewProduct')->with('message','Product Updated Successfully!'); 
     }
 }

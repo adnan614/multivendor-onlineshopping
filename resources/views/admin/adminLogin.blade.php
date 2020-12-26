@@ -13,6 +13,15 @@
   </head>
   <body>
    <div class="container">
+   @if(session()->has('message'))
+    <p class="alert alert-danger">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
    <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <h3>Login Form </h3>

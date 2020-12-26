@@ -13,13 +13,23 @@
   </head>
   <body>
    <div class="container">
+   
+@if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
    <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <h3>Login Form </h3>
                     <form action="{{route('login.seller')}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control"  placeholder="Your Email *" name="email"  />
+                            <input type="email" class="form-control"  placeholder="Your Email *" name="email" />
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Your Password *" name="password"/>

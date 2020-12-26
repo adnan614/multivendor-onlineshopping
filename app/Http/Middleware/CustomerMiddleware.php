@@ -17,7 +17,7 @@ class CustomerMiddleware
     public function handle($request, Closure $next)
     {
         if(!Auth::check()){
-            return redirect()->to('/customer/login');
+            return redirect()->intended('/customer/login');
        }
        return $next($request);
     }

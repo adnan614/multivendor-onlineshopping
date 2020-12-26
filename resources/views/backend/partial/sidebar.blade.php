@@ -33,25 +33,7 @@
                 
             </li>
             <br>
-            <li style="margin-left: 30px; margin-top: 20px;">
-                <div href="#" data-toggle="collapse" data-target="#category" aria-expanded="true"style="color: grey;">
-                        
-                        <i class="fa fa-fw fa-book" style="color: grey;"></i> Category
-                        <i class="fa fa-fw fa-caret-down"></i>
-                        
-                </div>
-                
-                <ul id="category" class="collapse" style="margin-top: 20px; margin-left:20px;" >
-                    <li style="margin-bottom: 17px;">
-                        <a href="{{ route('insertCategory')}}" style="color: grey;"> Insert Category </a>
-                    </li>
-                    <li>
-                        <a href="{{route('viewCategory')}}" style="color: grey;"> View Category </a>
-                    </li>
-                </ul>
-                
-            </li>
-            <br>
+          
 
             <li style="margin-left: 30px; margin-top: 20px;">
                     <a href="{{route('view.order')}}" style="color: grey;">

@@ -3,47 +3,44 @@
 @section('content')
 
 <section id="slider"><!--slider-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#slider-carousel" data-slide-to="1"></li>
-							<li data-target="#slider-carousel" data-slide-to="2"></li>
-						</ol>
-						
-						<div class="carousel-inner">
-							<div class="item active">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>Free E-Commerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								@foreach($sliders as $data)
-								<div class="col-sm-6">
-									<img src="{{ asset('upload/'.$data->image) }}" class="girl img-responsive" alt="" />
-									
-								</div>
-								@endforeach
-							</div>
-							
-							
-						</div>
-						
-						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-							<i class="fa fa-angle-left"></i>
-						</a>
-						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-							<i class="fa fa-angle-right"></i>
-						</a>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-    </section><!--/slider-->
+    <div class="container">
+      <div class="row"> 
+
+         <div id="carousel-example-generic" class="carousel slide " data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    @foreach( $sliders as $slider )
+                        <li data-target="#carousel-example-generic" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+                    @endforeach
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    @foreach( $sliders as $slider )
+                        <div class="item {{ $loop->first ? ' active' : '' }}" >
+							<img src="{{ asset('upload/'.$slider->image) }}"  style="width: 100%; height: 200pz;" >
+							<div class="carousel-caption d-none d-md-block">
+                          <h5  style="color: black; font-size: 40px;">{{$slider->name}}</h5>
+                           
+                         </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+         </div>
+     </div>
+ </section>
     
     <section>
 		<div class="container">
@@ -78,7 +75,7 @@
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
 						@foreach($products as $data)
-						<div class="col-sm-4">
+						<div class="col-sm-3">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 								<a href="{{route('productDetails',$data->id)}}">

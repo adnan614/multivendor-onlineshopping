@@ -2,11 +2,22 @@
 
 @section('content')
 
+
 <section id="form"><!--form-->
 		<div class="container">
+		@if(session()->has('message'))
+				<p class="alert alert-success">{{session()->get('message')}}</p>
+			@endif
+
+			@if($errors->any())
+				@foreach($errors->all() as $er)
+					<p class="alert alert-danger">{{$er}}</p>
+				@endforeach
+			@endif
+					
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-1">
-					<div class="login-form"><!--login form-->
+			   <div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
 						<form action="{{route('Login')}}" method="post">
 						@csrf
@@ -25,6 +36,7 @@
 					<h2 class="or">OR</h2>
 				</div>
 				<div class="col-sm-4">
+
 					<div class="signup-form"><!--sign up form-->
 						<h2>New User Signup!</h2>
 						<form action="{{ route('signup') }}" method="POST">

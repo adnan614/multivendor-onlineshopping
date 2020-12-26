@@ -86,6 +86,14 @@
 								
 								<span>
 									<span>BDT {{$productShow->price}} </span>
+									<label>Product Size</label>
+									<select name="product_size" class="form-control" required oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must pick 1 size for the product')">
+										<option disabled selected>Select a size</option>
+										<option>Small</option>
+										<option>Medium</option>
+										<option>Large</option>
+										<option>Extra Large</option>
+                                    </select>
 									<label>Quantity:</label>
 									<input type="number" min="1" value="1" name="quantity"/>
 									<button type="submit" class="btn btn-default cart">

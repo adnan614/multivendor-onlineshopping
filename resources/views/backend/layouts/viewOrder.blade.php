@@ -28,6 +28,7 @@
                         <th>Product Name</th>
                         <th>Product Price</th>
                         <th>Product Quantity</th>
+                        <th>Product Size</th>
                         <th> Amount </th>
                         <th>Payment Method </th>
                         <th> Order Status</th>
@@ -45,8 +46,9 @@
                         <td>{{$data->product_name}}</td>
                         <td>{{$data->product_price}}</td>
                         <td>{{$data->product_quantity}}</td>
+                        <td>{{$data->product_size}}</td>
                         <td>{{$data->sub_total}}</td>
-                        <td>Cash On delivery</td>
+                        <td>Cash On Delivery</td>
                         <td>
                             
                             <select name="order_status">

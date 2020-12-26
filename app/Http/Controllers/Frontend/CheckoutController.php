@@ -43,20 +43,22 @@ class CheckoutController extends Controller
                 'seller_id'=>$item['seller_id'],
                 'product_id'=>$item['id'],
                 'product_name'=>$item['name'],
+                'product_size'=>$item['product_size'],
                 'product_quantity'=>$item['quantity'],
                 'product_price'=>$item['price'],
                 'sub_total'=>$item['price'] * $item['quantity'],
             ]);
             
         }
-      
 
          Payment::create([
-            'order_id'=>$order->id,
+            'order_products_id'=>$order_products->id,
             'amount'=>array_sum(array_column($cart,'sub_total')),
             'payment_method'=>$request->input('payment_method')
          ]);
 
-        return redirect()->back();
+         session()->forget('cart');
+
+        return view('frontend.layouts.checkoutSuccess');
     }
 }

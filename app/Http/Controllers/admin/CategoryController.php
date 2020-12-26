@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -9,56 +9,63 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function insertCategory(){
-
-        
-        return view('backend.layouts.insertCategory');
+    public function insertCategory()
+    {
+  
+        return view('admin.insertCategory');
     }
 
     public function storeCategory(Request $request)
 
     {
+        $request->validate([
+            'name'=>'required | min:3',
+
+        ]);
         $categoryStore = Category::create([
             'name' =>  $request->input('name'),
-            'description' => $request->input('description'),
-            'user_id'=>auth()->user()->id
+            'description' => $request->input('description')
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Category Inserted Successfully!');
 
     }
 
     public function viewCategory()
     {
-        $categoryShow = Category::where('user_id',auth()->user()->id)->get();
-        return view('backend.layouts.viewCategory',compact('categoryShow'));
+        $categoryShow = Category::all();
+        return view('admin.viewCategory',compact('categoryShow'));
 
     }
    
     public function editCategory($id)
     {
       $categoryEdit = Category::find($id);
-      return view('backend.layouts.editCategory',compact('categoryEdit'));
+      return view('admin.editCategory',compact('categoryEdit'));
     }
 
     public function updateCategory(Request $request,$id)
     {
+        $request->validate([
+            'name'=>'required | min:3',
+
+        ]);
+
           $categoryUpdate = Category::find($id);
 
           $categoryUpdate->name = $request->input('category_name');
           $categoryUpdate->description = $request->input('category_description');
-          $categoryUpdate->user_id = auth()->user()->id;
           
 
           $categoryUpdate->save();
-          return redirect()->route('viewCategory'); 
+          return redirect()->route('viewCategory')->with('message','Category updated Successfully!'); 
     }
     public function deleteCategory($id)
     {
         $categoryDelete = Category::find($id);
           $categoryDelete->delete();
 
-          return redirect()->back();
+          return redirect()->back()->with('message','Category Deleted Successfully!');
     }
 
 

@@ -13,7 +13,7 @@ class OrderController extends Controller
     public function viewOrder()
     {
 
-        $orders = Order_product::with('order')->where('seller_id',auth()->user()->id)->get();
+        $orders = Order_product::with('order','payment')->where('seller_id',auth()->user()->id)->get();
         return view('backend.layouts.viewOrder',compact('orders'));
     }
 }
