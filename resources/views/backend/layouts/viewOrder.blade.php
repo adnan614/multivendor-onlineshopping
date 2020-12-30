@@ -1,6 +1,15 @@
 @extends('backend.home')
 
 @section('content')
+@if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
 
  <div class="row"><!-- row 2 begin -->
     <div class="col-lg-12"><!-- col-lg-12 begin -->
@@ -50,12 +59,18 @@
                         <td>{{$data->sub_total}}</td>
                         <td>Cash On Delivery</td>
                         <td>
-                            
-                            <select name="order_status">
-                                <option>Processed</option>
-                                <option>cancelled</option>
-                                <option>Delivered</option>
+                        <form action="{{route('order.update',$data->id)}}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <select class="form-control" name="order_status">
+                          
+                            <option value="processed">Processed</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="delivered">Delivered</option>
+                          
                             </select>
+                            <button class="btn btn-primary">Update</button>
+                        </form>
                         </td>
                     </tr>
                     @endforeach

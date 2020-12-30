@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order_product;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -21,9 +23,8 @@ class myAccountController extends Controller
 
     public function edit(Request $request)
     {
-
-        $user = new User();
-
+        $id = auth()->user()->id;
+        $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->address = $request->input('address');
@@ -31,10 +32,19 @@ class myAccountController extends Controller
         $user->city = $request->input('city');
         $user->country = $request->input('country');
         $user->role  = 'customer';
-        $user->password = auth()->user()->password;
 
         $user->save();
 
          return redirect()->back()->with('message','Profile Updated Successfully!');
+    }
+
+    public function showOrder()
+    {
+         $id = auth()->user()->id;
+          $orderT = Order::where('user_id',$id)->first();
+          
+          $orderShow = Order_product::where('order_id',$orderT->id)->get();
+        return view('frontend.layouts.myOrder',compact('orderShow'));
+          
     }
 }

@@ -39,21 +39,36 @@
            </aside>
          </div>
          <div class="col-sm-9">
-               <h2 style="text-align: center;"><i style="margin-right:10px;" class="fa fa-user"
-               ></i>Personal Information</h2>
-               <hr>
-               <p><span style="font-size: 20px; font-weight: 600">Mobile Number:</span> <span style="margin-left: 100px;">{{auth()->user()->phone_number}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">Name:</span> <span style="margin-left: 193px;">{{auth()->user()->name}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">Email:</span> <span style="margin-left: 193px;">{{auth()->user()->email}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">Address:</span> <span style="margin-left: 170px;">{{auth()->user()->address}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">City:</span> <span style="margin-left: 207px;">{{auth()->user()->city}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">Country:</span> <span style="margin-left: 174px;">{{auth()->user()->country}}</span> </p>
-               
-           </div>
+         <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th>#</th>
+                        <th>Product Name</th>
+                        <th>Product Quantity</th>
+                        <th>Product Size</th>
+                        <th>Product Price</th>
+                        <th>Product Sub Total</th>
+                        <th>Order Status</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                      @foreach($orderShow as $key=>$data)
+                      <tr style="font-weight:500">
+                         <td>{{$key+1}}</td>
+                         <td>{{$data->product_name}}</td>
+                         <td>{{$data->product_quantity}}</td>
+                         <td>{{$data->product_size}}</td>
+                         <td>{{$data->product_price}}</td>
+                         <td>{{$data->sub_total}}</td>
+                         <td>{{$data->order_status}}</td>
+                      </tr>
+                      @endforeach
 
-           
+                  </tbody>
+            </table> 
+         </div>
+
     </div>
 </div>
-
-
 @stop

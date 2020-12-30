@@ -85,7 +85,16 @@
 								<h2>{{$productShow->name}}</h2>
 								
 								<span>
-									<span>BDT {{$productShow->price}} </span>
+								<div style="
+										color: #FE980F;
+										/* float: left; */
+										font-family: 'Roboto', sans-serif;
+										font-size: 30px;
+										font-weight: 700;
+										margin-right: 20px;
+										margin-top: 0px;
+										">BDT {{$productShow->price}} </div>
+									
 									<label>Product Size</label>
 									<select name="product_size" class="form-control" required oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must pick 1 size for the product')">
 										<option disabled selected>Select a size</option>

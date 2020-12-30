@@ -30,7 +30,6 @@ class CheckoutController extends Controller
             'city'=>$request->input('city'),
             'email'=>$request->input('email'),
             'phone_number'=>$request->input('phone_number'),
-            'order_status'=>'pending',
             'grant_total'=>array_sum(array_column($cart,'sub_total'))
         ]);
 

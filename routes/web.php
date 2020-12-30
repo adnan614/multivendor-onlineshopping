@@ -61,6 +61,7 @@ Route::group(['middleware'=>'seller'],function(){
 Route::get('/MyAccount/','Frontend\myAccountController@myAccount')->name('my.account');
 Route::get('/MyAccount/editMyAccount','Frontend\myAccountController@editMyAccount')->name('edit.account');
 Route::put('/MyAccount/edit/','Frontend\myAccountController@edit')->name('edit');
+Route::get('/MyAccount/MyOrder','Frontend\myAccountController@showOrder')->name('my.order');
 
 // frontend shop
 
@@ -115,6 +116,7 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('admin/slider/view/slider','admin\sliderController@viewSlider')->name('view.slider');
     Route::get('admin/slider/view/slider/delete/{id}','admin\sliderController@sliderDelete')->name('slider.delete');
     Route::get('/seller/view/order/','Backend\OrderController@viewOrder')->name('view.order');
+    Route::put('/seller/view/order/{id}','Backend\OrderController@OrderStatus')->name('order.update');
 
 
 });

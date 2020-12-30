@@ -23,6 +23,7 @@ class CreateOrderProductsTable extends Migration
             $table->string('product_size');
             $table->integer('product_price');
             $table->string('sub_total');
+            $table->string('order_status')->default('pending');
             $table->timestamps();
         });
     }
