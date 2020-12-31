@@ -46,13 +46,15 @@ Route::get('/seller','Backend\HomeController@index')->name('dashboard')->middlew
 
 // products seller //
 
-Route::group(['middleware'=>'seller'],function(){
+Route::group(['middleware'=>['seller','approval']],function(){
     Route::get('/insertProduct','Backend\productController@insertProduct')->name('insertProduct');
     Route::get('/viewProduct','Backend\productController@viewProduct')->name('viewProduct');
     Route::get('delete.product{id}','Backend\productController@deleteProduct');
     Route::get('edit.product{id}','Backend\productController@editProduct');
     Route::post('/addProduct','Backend\productController@addProduct')->name('addProduct');
     Route::post('/update/product/{id}','Backend\productController@updateProduct')->name('update.product');
+    Route::get('/seller/view/order/','Backend\OrderController@viewOrder')->name('view.order');
+    Route::get('/seller/view/seller/{id}','Backend\SellerController@productActiveStatus')->name('product.active');
     
 });
 
@@ -112,11 +114,10 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('/admin/slider/insert','admin\sliderController@insertSliderForm')->name('insert.slider');
 
     Route::post('admin/slider/add/slider','admin\sliderController@addSlider')->name('add.slider');
-
     Route::get('admin/slider/view/slider','admin\sliderController@viewSlider')->name('view.slider');
     Route::get('admin/slider/view/slider/delete/{id}','admin\sliderController@sliderDelete')->name('slider.delete');
-    Route::get('/seller/view/order/','Backend\OrderController@viewOrder')->name('view.order');
     Route::put('/seller/view/order/{id}','Backend\OrderController@OrderStatus')->name('order.update');
+    Route::get('/admin/view/seller/{id}','admin\sellerController@activeStatus')->name('active');
 
 
 });

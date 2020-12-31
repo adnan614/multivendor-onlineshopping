@@ -2,12 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-
 use Closure;
 
-class AdminMiddleware
+class ApprovalMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,11 +15,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-       if(!Auth::check()){
-            return redirect()->to('/admin/login/form');
-       }
-       return $next($request);
-
+        if(auth()->user()->is_approved == 0){
+            return redirect()->route('dashboard')->with('message', 'You want to need admin Approval!');
+        }
+        return $next($request);
     }
-
 }

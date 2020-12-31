@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('color');
             $table->integer('price');
             $table->string('image');
-            $table->string('status')->default('active');
+            $table->string('status')->default(false);
             $table->string('description')->nullable();
             $table->timestamps();
         });

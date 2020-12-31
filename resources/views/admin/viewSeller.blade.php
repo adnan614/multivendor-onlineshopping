@@ -36,12 +36,13 @@
                             <th>City</th>
                             <th>Country</th>
                             <th>Phone Number</th>
+                            <th>Approval</th>
                             <th> Delete </th>
                         </tr>
                     </thead>
                     <tbody>
-                @foreach($sellerShow as $key=>$data)  
-
+                @foreach($sellerShow as $key=>$data) 
+                
                     <tr style="font-weight:500">
                         <td>{{$key+1}}</td>
                         <td>{{$data->name}}</td>
@@ -50,6 +51,22 @@
                         <td>{{$data->city}}</td>
                         <td>{{$data->country}}</td>
                         <td>{{$data->phone_number}}</td>
+                        <td>
+                        <a style="color:aliceblue" href="{{route('active',$data->id)}}">
+                        
+                            @if($data->is_approved)
+                            <span class="label-custom label label-success"> Approved</span>
+
+                            @else
+
+                            <span class="label-custom label label-danger"> Not Approved </span>
+
+                            @endif
+                        
+                        
+                        </a>
+                        
+                        </td>
                         <td>
                             <a href="{{route('seller.delete',$data->id)}}">
                             <i class="fa fa-trash" aria-hidden="true"></i> Delete

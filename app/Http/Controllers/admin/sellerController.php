@@ -25,4 +25,23 @@ class sellerController extends Controller
         return redirect()->back()->with('message', 'Data Deleted successfully!');
         
     }
+
+    public function activeStatus($id)
+    {
+        $sellerActive = User::find($id);
+
+
+
+        if($sellerActive->is_approved)
+        {
+            $sellerActive->update([
+                'is_approved' => 0
+            ]);
+        }else{
+            $sellerActive->update([
+                'is_approved' => 1
+            ]);
+        }
+        return redirect()->back();
+    }
 }

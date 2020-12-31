@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\Seller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
@@ -92,5 +93,23 @@ class SellerController extends Controller
     {
         Auth::logout();
         return redirect()->route('seller.login');
+    }
+
+    public function productActiveStatus($id)
+    {
+       $productStatus = Product::find($id);
+
+       
+       if($productStatus->status)
+       {
+          $productStatus->update([
+               'status' => 0
+           ]);
+       }else{
+          $productStatus->update([
+               'status' => 1
+           ]);
+       }
+       return redirect()->back()->with('message','Product Status Updated!');
     }
 }

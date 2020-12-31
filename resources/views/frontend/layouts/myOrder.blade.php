@@ -38,7 +38,10 @@
                  </ul>
            </aside>
          </div>
+
          <div class="col-sm-9">
+
+             <h2 style="text-align: center;">My Order</h2>
          <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                     <thead class="thead-dark">
@@ -63,6 +66,8 @@
                          <td>{{$data->sub_total}}</td>
                          <td>{{$data->order_status}}</td>
                       </tr>
+
+                      
                       @endforeach
 
                   </tbody>

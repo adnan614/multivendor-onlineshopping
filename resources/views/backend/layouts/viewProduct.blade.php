@@ -14,7 +14,7 @@
             </div>
 
 @if(session()->has('message'))
-    <p class="alert alert-danger">{{session()->get('message')}}</p>
+    <p class="alert alert-success">{{session()->get('message')}}</p>
 @endif
 
 @if($errors->any())
@@ -49,7 +49,20 @@
                         <td>{{ $row->color }}</td>
                         <td><img src="{{ asset('upload/'.$row->image) }}" width="75px" height="75px"></td>
                         <td>{{ $row->price }}</td>
-                        <td><span class="label-custom label label-success">Active</span></td>
+                        <td><a style="color:aliceblue" href="{{route('product.active',$row->id)}}">
+                        
+                        @if($row->status)
+                        <span class="label-custom label label-success"> Active </span>
+
+                        @else
+
+                        <span class="label-custom label label-danger"> Inactive </span>
+
+                        @endif
+                    
+                    
+                    </a>
+                </td>
                         <td>
                         <a class="btn btn-danger" href="{{ url('delete.product'.$row->id) }}">
                         <i class="fa fa-trash" aria-hidden="true"></i> Delete
