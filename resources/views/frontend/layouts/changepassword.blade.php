@@ -2,10 +2,9 @@
 @section('content')
 
 <hr>
-
 <div class="container">
     <div class="row">
-         <div class="col-sm-3" style="border: 1px solid #d4e9ea;">
+    <div class="col-sm-3" style="border: 1px solid #d4e9ea;">
          <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
@@ -39,19 +38,34 @@
            </aside>
          </div>
          <div class="col-sm-9">
-               <h2 style="text-align: center;"><i style="margin-right:10px;" class="fa fa-user"
-               ></i>Personal Information</h2>
-               <hr>
-               <p><span style="font-size: 20px; font-weight: 600">Mobile Number:</span> <span style="margin-left: 100px;">{{auth()->user()->phone_number}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">Name:</span> <span style="margin-left: 193px;">{{auth()->user()->name}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">Email:</span> <span style="margin-left: 193px;">{{auth()->user()->email}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">Address:</span> <span style="margin-left: 170px;">{{auth()->user()->address}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">City:</span> <span style="margin-left: 207px;">{{auth()->user()->city}}</span> </p>
-               <p><span style="font-size: 20px; font-weight: 600">Country:</span> <span style="margin-left: 174px;">{{auth()->user()->country}}</span> </p>
-               
-           </div>
+@if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
+@endif
 
-           
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
+            <h2 style="text-align: center;">Change Password</h2>
+            <form method="post" action="{{route('edit.password')}}">
+                @csrf
+                @method('put')
+            <div class="form-group">
+                <label for="oldPassword">Old Password</label>
+                <input type="password" class="form-control" style="width: 267px;" id="oldPassword" placeholder="old password" name="old_password">
+           </div>
+           <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" class="form-control" style="width: 267px;"  id="newPassword" placeholder="New Password" name="password">
+           </div>
+           <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" style="width: 267px;"  id="oldPassword" placeholder="Confirm password" name="password_confirmation">
+           </div>
+           <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+         </div>
     </div>
 </div>
 

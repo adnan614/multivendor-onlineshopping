@@ -78,6 +78,10 @@ Route::get('/categoryWiseShow/{id}','Frontend\HomeController@categoryWiseShow')-
 
 Route::get('/productDetails/{id}','Frontend\ProductDetailsController@productDetails')->name('productDetails');
 
+// frontend password
+Route::get('/MyAccount/ChangePassword/','Frontend\myAccountController@changePassword')->name('change.password');
+Route::put('/MyAccount/editPassword/','Frontend\myAccountController@editPassword')->name('edit.password');
+
 
 //  checkout
 
@@ -118,6 +122,7 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('admin/slider/view/slider/delete/{id}','admin\sliderController@sliderDelete')->name('slider.delete');
     Route::put('/seller/view/order/{id}','Backend\OrderController@OrderStatus')->name('order.update');
     Route::get('/admin/view/seller/{id}','admin\sellerController@activeStatus')->name('active');
+    Route::get('/seller/view/category/{id}','admin\CategoryController@categoryActiveStatus')->name('category.active');
 
 
 });

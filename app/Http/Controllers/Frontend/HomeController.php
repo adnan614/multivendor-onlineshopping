@@ -13,8 +13,8 @@ class HomeController extends Controller
     public function home()
     {
         $sliders = Slider::all();
-        $categories = Category::all();
-        $products = Product::all();
+        $categories = Category::where('status',1)->get();
+        $products = Product::where('status',1)->get();
         return view('frontend.home',compact('categories','products','sliders'));
 
     }
@@ -22,11 +22,10 @@ class HomeController extends Controller
     public function categoryWiseShow($id)
     {
         
-        $categories = Category::all();
+        $categories =  Category::where('status',1)->get();
         $category_wise_products = Product::where('category_id',$id)->get();
        
         return view('frontend.layouts.categoryWiseProducts',compact('category_wise_products','categories'));
-
        
     }
    

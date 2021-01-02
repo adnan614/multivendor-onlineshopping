@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
+use Illuminate\Support\Facades\Auth;
 
+use App\Rules\oldPasswordRule;
 use App\Http\Controllers\Controller;
 use App\Models\Order_product;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\User;
+
 
 class myAccountController extends Controller
 {
@@ -46,5 +49,29 @@ class myAccountController extends Controller
           $orderShow = Order_product::where('order_id',$orderT->id)->get();
         return view('frontend.layouts.myOrder',compact('orderShow'));
           
+    }
+
+    public function changePassword()
+    {
+        return view('frontend.layouts.changepassword');
+    }
+
+    public function editPassword(Request $request)
+    {
+        
+     
+        $request->validate([
+            'old_password'=>['required', new oldPasswordRule()],
+            'password' => 'required|confirmed'
+        ]);
+
+        auth()->user()->update([
+            
+             'password'=>bcrypt($request->input('password')),
+        
+        ]);
+   
+        return redirect()->route('customerLogout')->with('message','password reset successfully!');
+
     }
 }

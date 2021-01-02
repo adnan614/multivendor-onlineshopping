@@ -12,11 +12,10 @@ class ProductDetailsController extends Controller
     public function productDetails($id)
     {
         $productShow = Product::with('seller')->find($id);
-        $categoryShow = Category::all();
+        $categoryShow =  Category::where('status',1)->get();
         // dd($productShow);
        return view('frontend.layouts.productDetails',compact('productShow','categoryShow'));
     }
 
-   
 
 }

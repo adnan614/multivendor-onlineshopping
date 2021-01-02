@@ -68,5 +68,23 @@ class CategoryController extends Controller
           return redirect()->back()->with('message','Category Deleted Successfully!');
     }
 
+    public function categoryActiveStatus($id)
+    {
+        $categoryStatus = Category::find($id);
+
+       
+        if($categoryStatus->status)
+        {
+            $categoryStatus->update([
+                'status' => 0
+            ]);
+        }else{
+            $categoryStatus->update([
+                'status' => 1
+            ]);
+        }
+        return redirect()->back()->with('message','category Status Updated!'); 
+    }
+
 
 }

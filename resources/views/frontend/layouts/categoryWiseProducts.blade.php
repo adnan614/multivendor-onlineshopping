@@ -95,9 +95,12 @@
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
 						@foreach($category_wise_products as $data)
+						   @if($data->status == 1)
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
+								
+								
 								<a href="{{route('productDetails',$data->id)}}">
 										<div class="productinfo text-center">
 											<img src="{{ asset('upload/'.$data->image) }}" alt="" />
@@ -110,6 +113,7 @@
 							
 							</div>
 						</div>
+						  @endif
 						@endforeach
 						</div>
 						

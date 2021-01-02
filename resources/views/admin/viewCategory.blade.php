@@ -12,15 +12,7 @@
                 
                </h3>
             </div>
-@if(session()->has('message'))
-    <p class="alert alert-success">{{session()->get('message')}}</p>
-@endif
 
-@if($errors->any())
-    @foreach($errors->all() as $er)
-        <p class="alert alert-danger">{{$er}}</p>
-    @endforeach
-@endif
 
             <br>
             <div class="panel-body">
@@ -39,7 +31,20 @@
                     <tr style="font-weight:500">
                         <td>{{$key+1}}</td>
                         <td>{{$row->name }}</td>
-                        <td><span class="label-custom label label-success">Active</span></td>
+                        <td><a style="color:aliceblue" href="{{route('category.active',$row->id)}}">
+                        
+                        @if($row->status)
+                        <span class="label-custom label label-success"> Active </span>
+
+                        @else
+
+                        <span class="label-custom label label-danger"> Inactive </span>
+
+                        @endif
+                    
+                    
+                    </a>
+                </td>
                         <td>
                         <a class="btn btn-danger" href="{{ url('delete.category'.$row->id) }}">
                         <i class="fa fa-trash" aria-hidden="true"></i> Delete
