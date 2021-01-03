@@ -60,27 +60,23 @@
                         </tr>
                   </thead>
                   <tbody>
-                      @if($orderT->count()>0)
-                      @foreach($orderT as $key=>$data)
+                     
                        
 
                       <tr style="font-weight:500">
-                         <td>{{$key+1}}</td>
-                         <td>{{$data->name}}</td>
-                         <td>{{$data->email}}</td>
-                         <td>{{$data->address}}</td>
-                         <td>{{$data->city}}</td>
-                         <td>{{$data->phone_number}}</td>
-                         <td>{{$data->grant_total}}</td>
-                         <td><a class="btn btn-primary" style="margin: 0;" href="{{route('order.products',$data->id)}}">
-                         View
-                        </a></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                        
                       </tr>
                      
-                      @endforeach
-                      @else
-                      <h2>No data found.</h2>
-                      @endif
+                      
+                    
+                     
 
                   </tbody>
             </table> 

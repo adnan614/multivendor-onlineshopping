@@ -64,6 +64,7 @@ Route::get('/MyAccount/','Frontend\myAccountController@myAccount')->name('my.acc
 Route::get('/MyAccount/editMyAccount','Frontend\myAccountController@editMyAccount')->name('edit.account');
 Route::put('/MyAccount/edit/','Frontend\myAccountController@edit')->name('edit');
 Route::get('/MyAccount/MyOrder','Frontend\myAccountController@showOrder')->name('my.order');
+Route::get('/MyAccount/MyOrder/view/{id}','Frontend\myAccountController@orderView')->name('order.products');
 
 // frontend shop
 

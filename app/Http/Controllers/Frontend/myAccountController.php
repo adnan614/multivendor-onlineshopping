@@ -44,10 +44,10 @@ class myAccountController extends Controller
     public function showOrder()
     {
          $id = auth()->user()->id;
-          $orderT = Order::where('user_id',$id)->first();
+        
+          $orderT = Order::where('user_id',$id)->get();
           
-          $orderShow = Order_product::where('order_id',$orderT->id)->get();
-        return view('frontend.layouts.myOrder',compact('orderShow'));
+        return view('frontend.layouts.myOrder',compact('orderT'));
           
     }
 
@@ -73,5 +73,12 @@ class myAccountController extends Controller
    
         return redirect()->route('customerLogout')->with('message','password reset successfully!');
 
+    }
+
+    public function orderView($id)
+    {
+        $orderProducts = Order_product::where('order_id',$id)->get();
+        dd($orderProducts);
+        return view('frontend.layouts.orderProductsView');
     }
 }
