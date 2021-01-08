@@ -22,10 +22,24 @@ class CartController extends Controller
 
     public function addToCart(Request $request,$id)
     { 
+
+        $request->validate([
+            'product_size'=>'required',
+            'quantity'=>'required|min:1|max:5',
+            
+        ]);
+         
+
+        $request->validate([
+
+
+        ]);
        
        $product = Product::find($id);
+    
        if($product)
        {
+           
         $cartData = session()->get('cart');
 
 
@@ -45,7 +59,6 @@ class CartController extends Controller
                     ]
             ];
 
-          
 
             session()->put('cart', $cart); 
             return redirect()->back()->with('message', 'Product added to cart successfully!');
@@ -56,12 +69,12 @@ class CartController extends Controller
         {
        
         $cartData[$id]['quantity'] = $cartData[$id]['quantity'] + $request->quantity;
-          $cartData[$id]['sub_total']= $cartData[$id]['quantity'] * $cartData[$id]['price'];
+        $cartData[$id]['sub_total']= $cartData[$id]['quantity'] * $cartData[$id]['price'];
         
-            session()->put('cart', $cartData);
-            return redirect()->back()->with('message', 'Product Increment to cart successfully!');
+        session()->put('cart', $cartData);
+        return redirect()->back()->with('message', 'Product Increment to cart successfully!');
         }
-        
+
         // if item not exist in cart then add to cart with quantity = 1
         $cartData[$id] = [
             "id"=>$product->id,

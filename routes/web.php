@@ -55,6 +55,8 @@ Route::group(['middleware'=>['seller','approval']],function(){
     Route::post('/update/product/{id}','Backend\productController@updateProduct')->name('update.product');
     Route::get('/seller/view/order/','Backend\OrderController@viewOrder')->name('view.order');
     Route::get('/seller/view/seller/{id}','Backend\SellerController@productActiveStatus')->name('product.active');
+    Route::put('/seller/view/order/{id}','Backend\OrderController@OrderStatus')->name('order.update');
+    Route::get('/seller/view/order/{id}','Backend\OrderController@generateInvoice')->name('generate.invoice');
     
 });
 
@@ -121,9 +123,9 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('admin/slider/add/slider','admin\sliderController@addSlider')->name('add.slider');
     Route::get('admin/slider/view/slider','admin\sliderController@viewSlider')->name('view.slider');
     Route::get('admin/slider/view/slider/delete/{id}','admin\sliderController@sliderDelete')->name('slider.delete');
-    Route::put('/seller/view/order/{id}','Backend\OrderController@OrderStatus')->name('order.update');
-    Route::get('/admin/view/seller/{id}','admin\sellerController@activeStatus')->name('active');
+   
     Route::get('/seller/view/category/{id}','admin\CategoryController@categoryActiveStatus')->name('category.active');
+    Route::get('/admin/view/seller/{id}','admin\sellerController@activeStatus')->name('active');
 
 
 });

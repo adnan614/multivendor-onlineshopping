@@ -42,7 +42,7 @@
 
          <div class="col-sm-9">
 
-             <h2 style="text-align: center;">My Order</h2>
+             <h2 style="text-align: center;">Order Details</h2>
              
     
          <div class="table-responsive">
@@ -50,31 +50,29 @@
                     <thead class="thead-dark">
                         <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>email</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Phone Number</th>
-                        <th>Grant Total</th>
-                        <th>Action</th>
+                        <th>Product Name</th>
+                        <th>Product Quantity</th>
+                        <th>Product Size</th>
+                        <th>Product Price</th>
+                        <th>Sub Total</th>
+                        <th>Order Status</th>
                         </tr>
                   </thead>
                   <tbody>
                      
                        
-
+              @foreach($orderProducts as $key=>$data)
                       <tr style="font-weight:500">
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                        
+                         <td>{{$key+1}}</td>
+                         <td>{{$data->product_name}}</td>
+                         <td>{{$data->product_quantity}}</td>
+                         <td>{{$data->product_size}}</td>
+                         <td>{{$data->product_price}}</td>
+                         <td>{{$data->sub_total}}</td>
+                         <td>{{$data->order_status}}</td>
                       </tr>
                      
-                      
+                @endforeach 
                     
                      
 

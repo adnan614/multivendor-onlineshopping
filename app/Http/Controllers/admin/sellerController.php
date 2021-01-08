@@ -11,7 +11,7 @@ class sellerController extends Controller
 {
     public function viewSeller()
     {
-        $sellerShow = User::where('role','seller')->get();
+        $sellerShow = User::where('role','seller')->paginate(5);
         return view('admin.viewSeller',compact('sellerShow'));
     }
 

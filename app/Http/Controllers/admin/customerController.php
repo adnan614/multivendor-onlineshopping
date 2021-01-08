@@ -10,7 +10,7 @@ class customerController extends Controller
 {
     public function viewCustomer()
     { 
-        $customerShow = User::where('role','customer')->get();
+        $customerShow = User::where('role','customer')->paginate(5);
         return view('admin.viewCustomer',compact('customerShow'));
     }
 

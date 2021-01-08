@@ -2,15 +2,6 @@
 
 @section('main.content')
 
-@if(session()->has('message'))
-    <p class="alert alert-success">{{session()->get('message')}}</p>
-@endif
-
-@if($errors->any())
-    @foreach($errors->all() as $er)
-        <p class="alert alert-danger">{{$er}}</p>
-@endforeach
-@endif
 
 <div class="row"><!-- row 2 begin -->
     <div class="col-lg-12"><!-- col-lg-12 begin -->
@@ -68,7 +59,7 @@
                         
                         </td>
                         <td>
-                            <a href="{{route('seller.delete',$data->id)}}">
+                            <a  class="btn btn-danger" href="{{route('seller.delete',$data->id)}}">
                             <i class="fa fa-trash" aria-hidden="true"></i> Delete
                             </a>
                         </td>
@@ -78,6 +69,7 @@
                   
                     </tbody>
                     </table>
+                    {{$sellerShow->links()}}
 
                 </div>
 

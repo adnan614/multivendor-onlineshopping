@@ -2,15 +2,7 @@
 
 @section('main.content')
 
-@if(session()->has('message'))
-    <p class="alert alert-success">{{session()->get('message')}}</p>
-@endif
 
-@if($errors->any())
-    @foreach($errors->all() as $er)
-        <p class="alert alert-danger">{{$er}}</p>
-@endforeach
-@endif
 
 <div class="row"><!-- row 2 begin -->
     <div class="col-lg-12"><!-- col-lg-12 begin -->
@@ -50,7 +42,7 @@
                         <td>{{$data->country}}</td>
                         <td>{{$data->phone_number}}</td>
                         <td>
-                            <a href="{{route('customer.delete',$data->id)}}">
+                            <a class="btn btn-danger" href="{{route('customer.delete',$data->id)}}">
                             <i class="fa fa-trash" aria-hidden="true"></i> Delete
                             </a>
                         </td>
@@ -58,7 +50,7 @@
                     @endforeach
                     </tbody>
                     </table>
-
+                {{$customerShow->links()}}
                 </div>
 
             </div>

@@ -78,7 +78,6 @@ class myAccountController extends Controller
     public function orderView($id)
     {
         $orderProducts = Order_product::where('order_id',$id)->get();
-        dd($orderProducts);
-        return view('frontend.layouts.orderProductsView');
+        return view('frontend.layouts.orderProductsView',compact('orderProducts'));
     }
 }

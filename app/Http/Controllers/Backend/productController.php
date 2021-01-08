@@ -51,7 +51,7 @@ class productController extends Controller
     public function viewProduct()
     {
 
-        $productShow = Product::where('user_id',auth()->user()->id)->with('categoryRelation')->get();
+        $productShow = Product::where('user_id',auth()->user()->id)->with('categoryRelation')->paginate(5);
         return view('backend.layouts.viewProduct',compact('productShow'));
     }
 
@@ -76,12 +76,6 @@ class productController extends Controller
 
     public function updateProduct(Request $request,$id)
     {  
-         $request->validate([
-        'name'=>'required',
-        'price'=>'required|min:3',
-        'category_id'=>'required',
-        'color'=>'required'
-    ]);
                   
         $productUpdate = Product::find($id);
         $productUpdate->category_id = $request->input('category_id');

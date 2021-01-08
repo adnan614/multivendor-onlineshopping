@@ -56,7 +56,7 @@
 								<div class="cart_quantity_button">
 									
 									<input class="cart_quantity_input"style="width: 80px;"
-									type="number" name="quantity" min="1" value="{{$data['quantity']}}">
+									type="number" name="quantity" min="1" max="5" value="{{$data['quantity']}}">
 									<button type="submit" style="margin-left:20px;" class="cart_quantity_update"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 								</div>
 							</form>
@@ -66,7 +66,7 @@
 							</td>
 							
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="{{route('cart.remove',$key)}}"><i class="fa fa-times"></i></a>
+								<a style="background-color: red;" class="cart_quantity_delete" href="{{route('cart.remove',$key)}}"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
 

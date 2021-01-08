@@ -104,7 +104,7 @@
 										<option>Extra Large</option>
                                     </select>
 									<label>Quantity:</label>
-									<input type="number" min="1" value="1" name="quantity"/>
+									<input type="number" min="1" max="5" value="1" name="quantity"/>
 									<button type="submit" class="btn btn-default cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart

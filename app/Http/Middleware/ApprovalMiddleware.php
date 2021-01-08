@@ -16,7 +16,7 @@ class ApprovalMiddleware
     public function handle($request, Closure $next)
     {
         if(auth()->user()->is_approved == 0){
-            return redirect()->route('dashboard')->with('message', 'You need admin Approval first!');
+            return redirect()->route('dashboard')->with('message', 'You need admin approval first!');
         }
         return $next($request);
     }

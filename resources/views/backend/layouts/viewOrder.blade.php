@@ -41,6 +41,7 @@
                         <th> Amount </th>
                         <th>Payment Method </th>
                         <th> Order Status</th>
+                        <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,7 @@
                         <td>{{$data->product_size}}</td>
                         <td>{{$data->sub_total}}</td>
                         <td>Cash On Delivery</td>
+                    
                         <td>
                         <form action="{{route('order.update',$data->id)}}" method="post">
                             @csrf
@@ -72,10 +74,12 @@
                             <button class="btn btn-primary">Update</button>
                         </form>
                         </td>
+                        <td><a href="{{route('generate.invoice',$data->id)}}" class="btn btn-info" target="_blank">Print Invoice</a></td>
                     </tr>
                     @endforeach
                     </tbody>
                     </table>
+                    {{$orders->links()}}
 
                 </div>
 

@@ -77,7 +77,7 @@
                     @endforeach
                     </tbody>
                     </table>
-
+                {{$productShow->links()}}
                 </div>
 
             </div>

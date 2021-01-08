@@ -17,6 +17,11 @@ class Order_product extends Model
    {
        return $this->belongsTo(Payment::class);
    }
+
+   public function orderRelation()
+   {
+    return $this->belongsTo(Order::class,'order_id','id');
+   }
 }
 
 

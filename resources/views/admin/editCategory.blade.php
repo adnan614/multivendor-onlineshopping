@@ -5,15 +5,6 @@
     <div class="col-md-6 offset-md-3">
         <h1 style="margin-top: 10px;"> <i class="fa fa-fw fa-edit" aria-hidden="true"></i> Update Category</h1>
         <br><br>
-@if(session()->has('message'))
-    <p class="alert alert-success">{{session()->get('message')}}</p>
-@endif
-
-@if($errors->any())
-    @foreach($errors->all() as $er)
-        <p class="alert alert-danger">{{$er}}</p>
-    @endforeach
-@endif
 
 <form method="post" action="{{url('update.category'.$categoryEdit->id)}}">
 
