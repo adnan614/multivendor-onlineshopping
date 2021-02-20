@@ -161,6 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Brian2694\Toastr\ToastrServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -234,6 +236,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'pdf' => Barryvdh\DomPDF\Facade::class,
+        'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+
 
     ],
 
