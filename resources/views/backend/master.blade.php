@@ -51,7 +51,7 @@
         <scrip src="{{asset('backend/assets/plugins/bower_components/chartist/dist/chartist.min.js')}}"></scrip>
         <scrip src="{{asset('backend/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></scrip>
         <scrip src="{{asset('backend/assets/js/pages/dashboards/dashboard1.js')}}"></scrip>
-        <scrip src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></scrip>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

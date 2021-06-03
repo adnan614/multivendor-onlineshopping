@@ -9,9 +9,12 @@ use Illuminate\Http\Request;
 class customerController extends Controller
 {
     public function viewCustomer()
-    { 
-        $customerShow = User::where('role','customer')->paginate(5);
-        return view('admin.viewCustomer',compact('customerShow'));
+    {
+        $date = \Carbon\Carbon::today()->subDays(30);
+        $users = User::where('created_at', '>=', $date)->get();
+        dd($users);
+        $customerShow = User::where('role', 'customer')->paginate(5);
+        return view('admin.viewCustomer', compact('customerShow'));
     }
 
     public function CustomerDelete($id)
@@ -19,7 +22,7 @@ class customerController extends Controller
         $customerDelete = User::find($id);
 
         $customerDelete->delete();
-        
+
         return redirect()->back()->with('message', 'Data Deleted successfully!');
     }
 }

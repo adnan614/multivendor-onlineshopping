@@ -112,14 +112,23 @@ Route::put('/cart/update/{id}', 'Frontend\CartController@CartUpdate')->name('car
 
 Route::group(['middleware' => 'admin'], function () {
 
+    Route::get('/login/google', 'admin\adminController@redirectToGoogle')->name('login.google');
+    Route::get('/login/google/callback', 'admin\adminController@handleGoogleCallback');
+
+    Route::get('/login/facebook', 'admin\adminController@redirectToFacebook')->name('login.facebook');
+    Route::get('/login/facebook/callback', 'admin\adminController@handleFacebookCallback');
+
+    Route::get('/login/github', 'admin\adminController@redirectToGithub')->name('login.github');
+    Route::get('/login/github/callback', 'admin\adminController@handleGithubCallback');
+
     Route::get('/admin', 'admin\adminController@adminShow')->name('admin.dashboard');
     // Category admin//
     Route::get('/insertCategory', 'admin\CategoryController@insertCategory')->name('insertCategory');
     Route::post('/storeCategory', 'admin\CategoryController@storeCategory')->name('storeCategory');
     Route::get('/viewCategory', 'admin\CategoryController@viewCategory')->name('viewCategory');
-    Route::get('edit.category{id}', 'admin\CategoryController@editCategory');
+    Route::get('edit/category/{slug}', 'admin\CategoryController@editCategory')->name('category.edit');
     Route::get('delete.category{id}', 'admin\CategoryController@deleteCategory');
-    Route::post('update.category{id}', 'admin\CategoryController@updateCategory');
+    Route::post('update/category/{slug}', 'admin\CategoryController@updateCategory')->name('update.category');
 
     Route::get('/admin/view/customer', 'admin\customerController@viewCustomer')->name('view.customer');
     Route::get('/admin/view/seller', 'admin\sellerController@viewSeller')->name('view.seller');

@@ -29,11 +29,6 @@ class CartController extends Controller
             
         ]);
          
-
-        $request->validate([
-
-
-        ]);
        
        $product = Product::find($id);
     
@@ -124,6 +119,8 @@ class CartController extends Controller
         
              $cart[$request->id]['sub_total']= $cart[$request->id]['quantity'] * $cart[$request->id]['price'];
              session()->put('cart', $cart);
+
+             
             return redirect()->back()->with('message', 'Product Updated into cart successfully!');
         }
     }
