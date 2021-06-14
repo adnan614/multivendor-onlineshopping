@@ -12,7 +12,7 @@ class customerController extends Controller
     {
         $date = \Carbon\Carbon::today()->subDays(30);
         $users = User::where('created_at', '>=', $date)->get();
-        dd($users);
+       
         $customerShow = User::where('role', 'customer')->paginate(5);
         return view('admin.viewCustomer', compact('customerShow'));
     }

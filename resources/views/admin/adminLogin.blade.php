@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="Your Password *" name="password" />
                     </div>
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <div class="col-md-6 offset-md-3">
                             <a href="{{route('login.google')}}" class="btn btn-danger btn-block">Login with Google</a>
                             <a href="{{route('login.facebook')}}" class="btn btn-primary btn-block">Login with Facebook</a>
@@ -43,7 +43,7 @@
                         </div>
 
 
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <input type="submit" class="btnSubmit" value="Login" />
                     </div>
